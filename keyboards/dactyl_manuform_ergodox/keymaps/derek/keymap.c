@@ -22,7 +22,7 @@ enum custom_keycodes {
   NUMBERPAD,
 // These three wiil work as RAISE, LOWER  and ADJUST in the original PLANCK
   CURSORRGHT = LT(_CURSORRGHT,KC_SPC),
-  CURSORLEFT = LT(_CURSORLEFT,KC_SPC),
+  CURSORLEFT = LT(_CURSORLEFT,KC_BSPC),
   NUMBERS,
 // These two are to activate/deactivate PLOVER layer
   PLOVER,
@@ -59,16 +59,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------.           ,----------------------------------------------.
  * |    x   |   x  |   x  |   x  |   x  |   x  | x |           | x |   x  |   x  |   x  |   x  |   x  |   x    |
  * |--------+------+------+------+------+------+---|           |---+------+------+------+------+------+--------|
- * | Esc    |   Q  |   W  |   E  |   R  |   T  | x |           | x |   Y  |   U  |   I  |   O  |   P  | BkSpc  |
+ * |Tab/ExRt|   Q  |   W  |   E  |   R  |   T  | x |           | x |   Y  |   U  |   I  |   O  |   P  | \      |
  * |--------+------+------+------+------+------+---|           |---+------+------+------+------+------+--------|
- * |Tab/ExRt|   A  |   S  |   D  |   F  |   G  | x |           | x |   H  |   J  |   K  |   L  |   ;  | Enter  |
+ * | Esc/Ctl|   A  |   S  |   D  |   F  |   G  | x |           | x |   H  |   J  |   K  |   L  |   ;  | '      |
  * |--------+------+------+------+------+------+---|           |---+------+------+------+------+------+--------|
- * | LCtrl  |   Z  |   X  |   C  |   V  |   B  | x |           | x |   N  |   M  |   ,  |   .  |   /  | RCtrl  |
+ * | LShft  |   Z  |   X  |   C  |   V  |   B  | x |           | x |   N  |   M  |   ,  |   .  |   /  | RShft  |
  * `--------+------+------+------+------+------+---'           `---+------+------+------+------+------+--------'
- *                 |  Win | Alt  |                                        | AltGr| Menu |
+ *                 |  Alt | F20  |                                        | AltGr| Menu |
  *                 `-------------'                                        `-------------'
  *                                 ,-------------.         ,-------------.
- *                                 |LShift| CCLt |         | CCRt |RShift|
+ *                                 | GUI  | CCLt |         | CCRt |Space |
  *                                 |      | Space|         |Space |      |
  *                                 ,------|------|         |------+------|
  *                                 |LAlt  |LCtrl |         | RCtrl|RAlt  | 
@@ -81,22 +81,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [_QWERTY] = KEYMAP(  // layer 0 : default
         // left hand
-	KC_NO,                  KC_NO,  KC_NO,   KC_NO,  KC_NO,  KC_NO, KC_NO,
-        KC_ESC,                 KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,  KC_NO,
-        LT(_EXTRARIGHT,KC_TAB), KC_A,   KC_S,    KC_D,   KC_F,   KC_G,  KC_NO,
-        KC_LCTL,          KC_Z,   KC_X,    KC_C,   KC_V,   KC_B,  KC_NO,
-                                KC_LGUI, KC_LALT,
-                                                SFT_T(KC_SPC),   CURSORLEFT,      
+        KC_NO,                  KC_NO,  KC_NO,   KC_NO,  KC_NO,  KC_NO, KC_NO,
+        LT(_EXTRARIGHT,KC_TAB), KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,  KC_NO,
+        LCTL_T(KC_ESC),           KC_A,   KC_S,    KC_D,   KC_F,   KC_G,  KC_NO,
+        KC_LSHIFT,              KC_Z,   KC_X,    KC_C,   KC_V,   KC_B,  KC_NO,
+                                KC_LALT, KC_F20,
+                                                KC_LGUI,   CURSORRGHT,      
                                                 ALT_T(KC_SPC),   LCTL_T(KC_SPC),
                                                 KC_LGUI,         LT(_EXTRARIGHT,KC_SPC),
      
         // right hand
                        KC_NO, KC_NO,  KC_NO, KC_NO,         KC_NO,  KC_NO,   KC_NO,
-                       KC_NO, KC_Y,   KC_U,  KC_I,          KC_O,   KC_P,    KC_BSPC,
-                       KC_NO, KC_H,   KC_J,  KC_K,          KC_L,   KC_SCLN, KC_ENT,
-                       KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_RCTL,
+                       KC_NO, KC_Y,   KC_U,  KC_I,          KC_O,   KC_P,    KC_BSLASH,
+                       KC_NO, KC_H,   KC_J,  KC_K,          KC_L,   KC_SCLN, KC_QUOT,
+                       KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_RSHIFT,
                                       KC_RALT,  KC_APP,
-           CURSORRGHT,   SFT_T(KC_SPC),  
+           CURSORLEFT,   KC_SPC,  
            LCTL_T(KC_SPC), ALGR_T(KC_SPC), 
            KC_APP, KC_LGUI 
     )
@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Esc  |Break |WheelD|MousUp|WheelU| Del  |  Ins | Home |  Up  | End  |   `  | Del  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Enter|SelAll|MousLt|MousDn|MousRt|      | PgUp | Left | Down |Right |      |Enter |
+ * | Enter|SelAll|MousLt|MousDn|MousRt|      | Left | Down | Up   |Right |      |Enter |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift| Undo | Cut  | Copy | Paste|RShift| PgDn |MsBtLe|MsBtMi|MsBtRt|      |RShift|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -141,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 ,[_CURSORRGHT] = KEYMAP(  // Layer 1: CURSORRGHT - cursor on the right, mouse on the left
         // left hand
-	KC_NO,   KC_NO,      KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,
+        KC_NO,   KC_NO,      KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,
         _______, KC_BRK,     KC_WH_D,      KC_MS_U,      KC_WH_U,      KC_DEL,  KC_NO,
         KC_ENT,  LCTL(KC_A), KC_MS_L,      KC_MS_D,      KC_MS_R,      XXXXXXX, KC_NO,
         _______, LCTL(KC_Z), LSFT(KC_DEL), LCTL(KC_INS), LSFT(KC_INS), KC_RSFT, KC_NO,
@@ -154,10 +154,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
                        KC_NO, KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                        KC_NO, KC_INS,   KC_HOME, KC_UP,   KC_END,  KC_GRV,  KC_DEL,
-                       KC_NO, KC_PGUP,  KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
+                       KC_NO, KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
                        KC_NO, KC_PGDN,  KC_BTN1, KC_BTN3, KC_BTN2, XXXXXXX, _______,
                                        _______, _______, 
-           _______, _______, 
+           RCMD(KC_LBRACKET), RCMD(KC_RBRACKET), 
            _______, _______, 
            _______, _______         
     )
@@ -400,7 +400,7 @@ When held:   LShift  LCtrl                                                      
 // Otherwise, it needs KC_*
 ,[_EXTRARIGHT] = KEYMAP(  // Layer 5: EXTRARIGHT - far-right side keys shifted onto the existing keys
         // left hand
-	KC_NO,   KC_NO,      KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_NO,      KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,
         _______, KC_GRV,     XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
         _______, KC_CAPS,    NUMBERPAD, PLOVER,  STENO_TXBOLT, XXXXXXX, KC_NO,
         _______, XXXXXXX,    XXXXXXX,   XXXXXXX, KC_LSFT, KC_LALT, KC_NO,
@@ -412,8 +412,8 @@ When held:   LShift  LCtrl                                                      
      
         // right hand
                        KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                       KC_NO, KC_GRV,  KC_LPRN, KC_RPRN, KC_MINS, KC_EQL,  _______,
-                       KC_NO, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT, _______,
+                       KC_NO, KC_GRV,  KC_LPRN, KC_RPRN, KC_MINS, KC_EQL,  KC_BSPC,
+                       KC_NO, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT, KC_ENT,
                        KC_NO, KC_RALT, KC_RSFT, KC_LBRC, KC_RBRC, KC_BSLS, _______,
                                        _______, _______, 
            _______, _______, 
