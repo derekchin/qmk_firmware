@@ -8,11 +8,11 @@
 #include "keymap_steno.h"
 
 #define _QWERTY 0 // default QWERTY layer
-#define _CURSORRGHT 1 // cursor on the right, mouse on the left
-#define _CURSORLEFT 2 // cursor on the left, mouse on the right
-#define _NUMBERS 3 // numbers and F-keys
-#define _NUMBERPAD 4  // numpad on the right along with the arithetic operations
-#define _EXTRARIGHT 5 // far-right side keys shifted onto the existing keys 
+#define _NUMBERPAD 1  // numpad on the right along with the arithetic operations
+#define _MOUSE 2 // cursor on the right, mouse on the left
+#define _ARROWS 3 // cursor on the left, mouse on the right
+#define _WINDOWS 4 // numbers and F-keys
+#define _SYMBOLS 5 // far-right side keys shifted onto the existing keys 
 #define _PLOVER 6 // plover STENO layout
 #define _STENO_TXBOLT 7 //Plover STENO layout for TX Bolt communication protocol
 
@@ -21,8 +21,8 @@ enum custom_keycodes {
   QWERTY = SAFE_RANGE,
   NUMBERPAD,
 // These three wiil work as RAISE, LOWER  and ADJUST in the original PLANCK
-  CURSORRGHT = LT(_CURSORRGHT,KC_SPC),
-  CURSORLEFT = LT(_CURSORLEFT,KC_BSPC),
+  CURSORRGHT = LT(_MOUSE,KC_SPC),
+  CURSORLEFT = LT(_ARROWS,KC_BSPC),
   NUMBERS,
 // These two are to activate/deactivate PLOVER layer
   PLOVER,
@@ -82,23 +82,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = KEYMAP(  // layer 0 : default
         // left hand
         KC_NO,                  KC_NO,  KC_NO,   KC_NO,  KC_NO,  KC_NO, KC_NO,
-        LT(_EXTRARIGHT,KC_TAB), KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,  KC_NO,
-        LCTL_T(KC_ESC),           KC_A,   KC_S,    KC_D,   KC_F,   KC_G,  KC_NO,
-        KC_LSHIFT,              KC_Z,   KC_X,    KC_C,   KC_V,   KC_B,  KC_NO,
-                                KC_LALT, KC_F20,
-                                                KC_LGUI,   CURSORRGHT,      
-                                                ALT_T(KC_SPC),   LCTL_T(KC_SPC),
-                                                KC_LGUI,         LT(_EXTRARIGHT,KC_SPC),
+        LT(_SYMBOLS,KC_TAB), KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,  KC_NO,
+        LCTL_T(KC_ESC),         KC_A,   KC_S,    KC_D,   KC_F,   KC_G,  KC_NO,
+        SFT_T(KC_LBRACKET),     KC_Z,   KC_X,    KC_C,   KC_V,   KC_B,  KC_NO,
+                                ALT_T(KC_F19),LT(_WINDOWS,KC_F20),
+                                                GUI_T(KC_SPACE),  LT(_NUMBERPAD,KC_SPC),      
+                                                LT(_SYMBOLS,KC_F21),     LT(_ARROWS,KC_F22),
+                                                KC_LGUI,          LT(_SYMBOLS,KC_SPC),
      
         // right hand
                        KC_NO, KC_NO,  KC_NO, KC_NO,         KC_NO,  KC_NO,   KC_NO,
-                       KC_NO, KC_Y,   KC_U,  KC_I,          KC_O,   KC_P,    KC_BSLASH,
-                       KC_NO, KC_H,   KC_J,  KC_K,          KC_L,   KC_SCLN, KC_QUOT,
-                       KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_RSHIFT,
-                                      KC_RALT,  KC_APP,
-           CURSORLEFT,   KC_SPC,  
-           LCTL_T(KC_SPC), ALGR_T(KC_SPC), 
-           KC_APP, KC_LGUI 
+                       KC_NO, KC_Y,   KC_U,  KC_I,          KC_O,   KC_P,    LT(_SYMBOLS,KC_BSLASH),
+                       KC_NO, KC_H,   KC_J,  KC_K,          KC_L,   LT(_MOUSE,KC_SCLN), LT(_MOUSE,KC_QUOT),
+                       KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, SFT_T(KC_RBRACKET),
+                                      LT(_WINDOWS,KC_EQUAL),  KC_APP,
+           
+           KC_BSPACE,               KC_SPACE,
+           LT(_MOUSE,KC_F17),  LT(_SYMBOLS,KC_F16),
+           KC_F18,                  KC_F19
     )
 
 /* Keymap 1: CURSORRGHT - cursor on the right, mouse on the left
@@ -139,25 +140,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
-,[_CURSORRGHT] = KEYMAP(  // Layer 1: CURSORRGHT - cursor on the right, mouse on the left
+,[_MOUSE] = KEYMAP(  // Layer 1: CURSORRGHT - cursor on the right, mouse on the left
         // left hand
-        KC_NO,   KC_NO,      KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,
-        _______, KC_BRK,     KC_WH_D,      KC_MS_U,      KC_WH_U,      KC_DEL,  KC_NO,
+        RESET,   KC_NO,      KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,
+        _______, KC_BRK,     LALT(LCTL(LGUI(LSFT(KC_F1)))),      KC_MS_U,      LALT(LCTL(LGUI(LSFT(KC_F2)))),      KC_DEL,  KC_NO,
         KC_ENT,  LCTL(KC_A), KC_MS_L,      KC_MS_D,      KC_MS_R,      XXXXXXX, KC_NO,
-        _______, LCTL(KC_Z), LSFT(KC_DEL), LCTL(KC_INS), LSFT(KC_INS), KC_RSFT, KC_NO,
+        _______, LCTL(KC_Z), LALT(LCTL(LGUI(LSFT(KC_F3)))), LCTL(KC_INS), LALT(LCTL(LGUI(LSFT(KC_F3)))), KC_RSFT, KC_NO,
                                _______, _______,
-                                                _______, _______,
+                                                KC_ENT, _______,
                                                 _______, _______,  
                                                 _______, _______, 
                                                                  
      
         // right hand
                        KC_NO, KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                       KC_NO, KC_INS,   KC_HOME, KC_UP,   KC_END,  KC_GRV,  KC_DEL,
-                       KC_NO, KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-                       KC_NO, KC_PGDN,  KC_BTN1, KC_BTN3, KC_BTN2, XXXXXXX, _______,
+                       KC_NO, KC_NO,    KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,
+                       KC_NO, KC_NO,    KC_MS_BTN1, KC_MS_BTN3,   KC_NO, KC_NO, KC_NO,
+                       KC_NO, KC_NO,    KC_NO,   KC_NO, KC_NO, XXXXXXX, _______,
                                        _______, _______, 
-           RCMD(KC_LBRACKET), RCMD(KC_RBRACKET), 
+           LSFT(RCMD(KC_LBRACKET)), LSFT(RCMD(KC_RBRACKET)), 
            _______, _______, 
            _______, _______         
     )
@@ -205,7 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
-,[_CURSORLEFT] = KEYMAP(  // layer 2: CURSORLEFT - cursor on the left, mouse on the right
+,[_ARROWS] = KEYMAP(  // layer 2: CURSORLEFT - cursor on the left, mouse on the right
         // left hand
           KC_NO, KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         _______, KC_BRK,     KC_HOME, KC_UP,   KC_END,  KC_INS,  KC_NO,
@@ -218,10 +219,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
                        KC_NO, KC_NO,   KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,
                        KC_NO, KC_DEL,  KC_WH_U,      KC_MS_U,      KC_WH_D,      KC_GRV,  KC_DEL,
-                       KC_NO, XXXXXXX, KC_MS_L,      KC_MS_D,      KC_MS_R,      XXXXXXX, _______,
+                       KC_NO, KC_LEFT, KC_DOWN,      KC_UP,        KC_RGHT,      _______, KC_ENT,
                        KC_NO, KC_RSFT, LCTL(KC_DEL), LCTL(KC_INS), LSFT(KC_INS), XXXXXXX, _______,
                                        _______, _______,
-           _______, _______, 
+           RCMD(KC_LBRACKET), RCMD(KC_RBRACKET), 
            _______, _______, 
            _______, _______
     )
@@ -267,12 +268,12 @@ When held:   LShift  LCtrl                                                      
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
-,[_NUMBERS] = KEYMAP(  // Layer 3: NUMBERS // numbers and F-keys
+,[_WINDOWS] = KEYMAP(  // Layer 3: NUMBERS // numbers and F-keys
         // left hand
-	KC_NO,                   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        _______,                 KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_NO,
-        LT(_EXTRARIGHT,KC_TAB),  SFT_T(KC_F1),   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_NO,
-        _______,                 SFT_T(KC_F11),  LCTL_T(KC_F12),  KC_LCTL, KC_LSFT, KC_LALT, KC_NO,
+        KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,    KC_NO,   LCTL(KC_4),   LCTL(KC_5),   LCTL(KC_6),   KC_NO, KC_NO,
+        _______,  KC_NO,   LCTL(KC_7),   LCTL(KC_8),   LCTL(KC_9),   KC_NO, KC_NO,
+        _______,  KC_NO,   KC_NO,   KC_LCTL, KC_LSFT, KC_LALT, KC_NO,
                                                   _______, _______,
                                                                     _______, _______,
                                                                     _______, _______,  
@@ -281,9 +282,9 @@ When held:   LShift  LCtrl                                                      
      
         // right hand
                        KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,           KC_NO,          KC_NO,
-                       KC_NO, KC_6,    KC_7,    KC_8,    KC_9,            KC_0,           KC_BSPC,
-                       KC_NO, KC_F6,   KC_F7,   KC_F8,   KC_F9,           KC_F10,  _______,
-                       KC_NO, KC_RALT, KC_RSFT, KC_COMM, LCTL_T(KC_DOT),  SFT_T(KC_SLSH), _______,
+                       KC_NO, KC_6,    LALT(LCTL(LGUI(KC_1))),LALT(LCTL(LGUI(KC_UP))),LALT(LCTL(LGUI(KC_3))), KC_0, KC_BSPC,
+                       KC_NO, KC_F6,   LALT(LCTL(LGUI(KC_LEFT))),LALT(LCTL(LGUI(KC_M))),LALT(LCTL(LGUI(KC_RIGHT))) ,  KC_F10,  _______,
+                       KC_NO, KC_RALT, LALT(LCTL(LGUI(KC_2))),LALT(LCTL(LGUI(KC_DOWN))),LALT(LCTL(LGUI(KC_4))),  SFT_T(KC_SLSH), _______,
                                        _______ ,_______, 
            _______, _______, 
            _______, _______, 
@@ -317,7 +318,7 @@ When held:   LShift  LCtrl                                                      
  * |--------+------+------+------+------+----------|           |---+------+------+------+------+------+--------|
  * |        | ...  | ...  | ...  |LShift| LAlt | x |           | x | RAlt |   1  |   2  |   3  |   \  |        |
  * `--------+------+------+------+------+------+---'           `---+------+------+------+------+------+--------'
- *                 |      |      |                                               |   0  |   -  |
+ *                 |      |      |                                               |   0  |   .  |
  *                 `-------------'                                               `-------------'
  *                                 ,-------------.         ,-------------.
  *                                 |      |      |         |      |      |
@@ -349,13 +350,12 @@ When held:   LShift  LCtrl                                                      
                        KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                        KC_NO, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
                        KC_NO, KC_PPLS, KC_4,    KC_5,    KC_6,    KC_PAST, KC_PENT,
-                       KC_NO, KC_RALT, KC_1,    KC_2,    KC_3,    KC_PSLS, _______,
-                                       KC_0,    KC_MINUS, 
-           _______, _______, 
+                       KC_NO, KC_MINS, KC_1,    KC_2,    KC_3,    KC_PSLS, KC_EQL,
+                                       KC_0,    KC_KP_DOT, 
+           _______, KC_0, 
            _______, _______, 
            _______, _______         
     )
-
 
 
 
@@ -398,23 +398,27 @@ When held:   LShift  LCtrl                                                      
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
-,[_EXTRARIGHT] = KEYMAP(  // Layer 5: EXTRARIGHT - far-right side keys shifted onto the existing keys
+
+
+
+
+,[_SYMBOLS] = KEYMAP(  // Layer 5: EXTRARIGHT - far-right side keys shifted onto the existing keys
         // left hand
         KC_NO,   KC_NO,      KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        _______, KC_GRV,     XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
-        _______, KC_CAPS,    NUMBERPAD, PLOVER,  STENO_TXBOLT, XXXXXXX, KC_NO,
-        _______, XXXXXXX,    XXXXXXX,   XXXXXXX, KC_LSFT, KC_LALT, KC_NO,
+        _______, KC_TILD,    XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
+         _______,KC_EXLM,    KC_AT,     KC_HASH, KC_DLR,  KC_PERC, KC_NO,
+        _______, KC_GRAVE,    KC_NO, PLOVER,  STENO_TXBOLT, XXXXXXX, KC_NO,
                                _______, _______,
                                                 _______, _______,
                                                 _______, _______,  
                                                 _______, _______, 
                                                                  
      
-        // right hand
+        // right hand 
                        KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                       KC_NO, KC_GRV,  KC_LPRN, KC_RPRN, KC_MINS, KC_EQL,  KC_BSPC,
-                       KC_NO, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT, KC_ENT,
-                       KC_NO, KC_RALT, KC_RSFT, KC_LBRC, KC_RBRC, KC_BSLS, _______,
+                       KC_NO, KC_NO,  KC_NO, KC_NO, KC_LCBR,KC_RCBR,KC_TRANSPARENT,
+                       KC_NO, KC_CIRC, KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN, KC_UNDS,
+                       KC_TRANSPARENT,KC_EQUAL,KC_PLUS, KC_MINUS, KC_LBRACKET,KC_RBRACKET, KC_NO,
                                        _______, _______, 
            _______, _______, 
            _______, _______, 
@@ -580,21 +584,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case CURSORRGHT:
       if (record->event.pressed) {
-        layer_on(_CURSORRGHT);                            
-        update_tri_layer(_CURSORRGHT, _CURSORLEFT, _NUMBERS);
+        layer_on(_MOUSE);                            
+        update_tri_layer(_MOUSE, _ARROWS, _WINDOWS);
       } else {
-        layer_off(_CURSORRGHT);
-        update_tri_layer(_CURSORRGHT, _CURSORLEFT, _NUMBERS);
+        layer_off(_MOUSE);
+        update_tri_layer(_MOUSE, _ARROWS, _WINDOWS);
        }
       return true;// false;
       break;
     case CURSORLEFT:
       if (record->event.pressed) {
-        layer_on(_CURSORLEFT);
-        update_tri_layer(_CURSORRGHT, _CURSORLEFT, _NUMBERS);
+        layer_on(_ARROWS);
+        update_tri_layer(_MOUSE, _ARROWS, _WINDOWS);
       } else {
-        layer_off(_CURSORLEFT);
-        update_tri_layer(_CURSORRGHT, _CURSORLEFT, _NUMBERS);
+        layer_off(_ARROWS);
+        update_tri_layer(_MOUSE, _ARROWS, _WINDOWS);
       }
       return true;// 	false;
       break;
@@ -616,10 +620,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           PLAY_NOTE_ARRAY(tone_plover, false, 0);
         #endif
         layer_off(_QWERTY);
-        layer_off(_CURSORRGHT);
-        layer_off(_CURSORLEFT);
-        layer_off(_NUMBERS);
-        layer_off(_EXTRARIGHT);
+        layer_off(_MOUSE);
+        layer_off(_ARROWS);
+        layer_off(_WINDOWS);
+        layer_off(_SYMBOLS);
         layer_off(_NUMBERPAD);
         layer_off(_STENO_TXBOLT);
         layer_on(_PLOVER);
@@ -640,10 +644,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           PLAY_NOTE_ARRAY(tone_plover, false, 0);
         #endif
         layer_off(_QWERTY);
-        layer_off(_CURSORRGHT);
-        layer_off(_CURSORLEFT);
-        layer_off(_NUMBERS);
-        layer_off(_EXTRARIGHT);
+        layer_off(_MOUSE);
+        layer_off(_ARROWS);
+        layer_off(_WINDOWS);
+        layer_off(_SYMBOLS);
         layer_off(_NUMBERPAD);
         layer_off(_PLOVER);
         layer_on(_STENO_TXBOLT);
