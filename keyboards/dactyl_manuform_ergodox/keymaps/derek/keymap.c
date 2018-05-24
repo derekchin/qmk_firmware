@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        KC_NO, KC_NO,  KC_NO, KC_NO,         KC_NO,  KC_NO,   KC_NO,
                        KC_NO, KC_Y,   KC_U,  KC_I,          KC_O,   KC_P,    LT(_SYMBOLS,KC_BSLASH),
                        KC_NO, KC_H,   LT(_SYMBOLS,KC_J),    KC_K,   KC_L,    LT(_MOUSE,KC_SCLN), LT(_MOUSE,KC_QUOT),
-                       KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, SFT_T(KC_RBRACKET),
+                       KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_SFTENT,
                                       LT(_WINDOWS,KC_EQUAL),  KC_APP,
 
 
