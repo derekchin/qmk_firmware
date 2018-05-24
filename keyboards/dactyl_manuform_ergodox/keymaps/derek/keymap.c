@@ -42,12 +42,12 @@ enum {
   TD_PLNUMBAR_PLEXIT2 = 2,
 };
 //Tap Dance Definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+/* qk_tap_dance_action_t tap_dance_actions[] = { */
   //Tap once for PloverNumBar, twice or more for exiting PLOVER
-  [TD_PLNUMBAR_PLEXIT] = ACTION_TAP_DANCE_DOUBLE(KC_1, EXT_PLV),
-  [TD_PLNUMBAR_PLEXIT2] = ACTION_TAP_DANCE_DOUBLE(STN_NUM, EXT_PLV2),
+  /* [TD_PLNUMBAR_PLEXIT] = ACTION_TAP_DANCE_DOUBLE(KC_1, EXT_PLV), */
+  /* [TD_PLNUMBAR_PLEXIT2] = ACTION_TAP_DANCE_DOUBLE(STN_NUM, EXT_PLV2), */
 // Other declarations would go here, separated by commas, if you have them
-};
+/* }; */
 
 
 
@@ -96,11 +96,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        KC_NO, KC_H,   LT(_SYMBOLS,KC_J),    KC_K,   KC_L,    LT(_MOUSE,KC_SCLN), LT(_MOUSE,KC_QUOT),
                        KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_SFTENT,
                                       LT(_WINDOWS,KC_EQUAL),  KC_APP,
-
-
                       LT(_WINDOWS,KC_BSPACE),   KC_SPACE,
-                      LT(_MOUSE,KC_F17),        MEH_T(KC_F16),
-                      KC_F18,                   ALL_T(KC_F19)
+                      LT(_MOUSE,KC_F17),        OSM(MOD_MEH),
+                      KC_F18,                   OSM(MOD_HYPR)
     )
 
 /* Keymap 1: CURSORRGHT - cursor on the right, mouse on the left
