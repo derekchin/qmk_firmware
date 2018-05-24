@@ -12,7 +12,7 @@
 #define _MOUSE 2 // cursor on the right, mouse on the left
 #define _ARROWS 3 // cursor on the left, mouse on the right
 #define _WINDOWS 4 // numbers and F-keys
-#define _SYMBOLS 5 // far-right side keys shifted onto the existing keys 
+#define _SYMBOLS 5 // far-right side keys shifted onto the existing keys
 #define _PLOVER 6 // plover STENO layout
 #define _STENO_TXBOLT 7 //Plover STENO layout for TX Bolt communication protocol
 
@@ -71,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 | GUI  | CCLt |         | CCRt |Space |
  *                                 |      | Space|         |Space |      |
  *                                 ,------|------|         |------+------|
- *                                 |LAlt  |LCtrl |         | RCtrl|RAlt  | 
+ *                                 |LAlt  |LCtrl |         | RCtrl|RAlt  |
  *                                 ,------|------|         |------+------|
- *                                 | GUI  |ExtRt |         |Menu  | GUI  | 
+ *                                 | GUI  |ExtRt |         |Menu  | GUI  |
  *                                 |      |      |         |      |      |
  *                                 `-------------'         `-------------'
  */
@@ -81,30 +81,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [_QWERTY] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_NO,                  KC_NO,  KC_NO,      KC_NO,  KC_NO,  KC_NO, KC_NO,
-        LT(_SYMBOLS,KC_TAB),    KC_Q,   KC_W,       KC_E,   KC_R,   KC_T,  KC_NO,
-        LCTL_T(KC_ESC),         KC_A,   KC_S,       LT(_NUMBERPAD,KC_D),   LT(_SYMBOLS,KC_F),   KC_G,  KC_NO,
-        SFT_T(KC_LBRACKET),     LT(_ARROWS,KC_Z),   KC_X,    KC_C,   KC_V,   KC_B,  KC_NO,
-                                ALT_T(KC_F19),      LT(_WINDOWS,KC_F20),
-                                            GUI_T(KC_SPACE),      LT(_NUMBERPAD,KC_SPC),      
-                                            LT(_SYMBOLS,KC_F21),  LT(_ARROWS,KC_F22),
-                                            KC_LGUI,              LT(_SYMBOLS,KC_SPC),
-     
+        KC_NO,                KC_NO,            KC_NO,          KC_NO,                KC_NO,              KC_NO,  KC_NO,
+        LT(_SYMBOLS,KC_TAB),  KC_Q,             KC_W,           KC_E,                 KC_R,               KC_T,   KC_NO,
+        LCTL_T(KC_ESC),       KC_A,             KC_S,           LT(_NUMBERPAD,KC_D),  LT(_SYMBOLS,KC_F),  KC_G,   KC_NO,
+        SFT_T(KC_LBRACKET),   LT(_ARROWS,KC_Z), KC_X,           KC_C,                 KC_V,               KC_B,   KC_NO,
+                                                ALT_T(KC_F19),  LT(_WINDOWS,KC_F20),
+                                            GUI_T(KC_SPACE),  LT(_WINDOWS,KC_SPC),
+                                            MEH_T(KC_F21),    LT(_ARROWS,KC_F22),
+                                            ALL_T(KC_F20),    LT(_SYMBOLS,KC_SPC),
+
         // right hand
                        KC_NO, KC_NO,  KC_NO, KC_NO,         KC_NO,  KC_NO,   KC_NO,
                        KC_NO, KC_Y,   KC_U,  KC_I,          KC_O,   KC_P,    LT(_SYMBOLS,KC_BSLASH),
-                       KC_NO, KC_H,   LT(_SYMBOLS,KC_J),  KC_K,          KC_L,   LT(_MOUSE,KC_SCLN), LT(_MOUSE,KC_QUOT),
+                       KC_NO, KC_H,   LT(_SYMBOLS,KC_J),    KC_K,   KC_L,    LT(_MOUSE,KC_SCLN), LT(_MOUSE,KC_QUOT),
                        KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, SFT_T(KC_RBRACKET),
                                       LT(_WINDOWS,KC_EQUAL),  KC_APP,
-           
-           KC_BSPACE,               KC_SPACE,
-           LT(_MOUSE,KC_F17),  LT(_SYMBOLS,KC_F16),
-           KC_F18,                  KC_F19
+
+
+                      LT(_WINDOWS,KC_BSPACE),   KC_SPACE,
+                      LT(_MOUSE,KC_F17),        MEH_T(KC_F16),
+                      KC_F18,                   ALL_T(KC_F19)
     )
 
 /* Keymap 1: CURSORRGHT - cursor on the right, mouse on the left
  * Note that "x" marks the keys non-existing in this short version for ManuForm.
- * 
+ *
  * This is my original Planck version, the Ergodox derived one is below it.
  * ,-----------------------------------------------------------------------------------.
  * | Esc  |Break |WheelD|MousUp|WheelU| Del  |  Ins | Home |  Up  | End  |   `  | Del  |
@@ -125,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+---|           |---+------+------+------+------+------+--------|
  * |        | Undo | Cut  | Copy | Paste|RShift| x |           | x | PgDn |MsBtLe|MsBtMi|MsBtRt|  ... |        |
  * `--------+------+------+------+------+------+---'           `---+------+------+------+------+------+--------'
- *                 |ExtRt | GUI  |                                        | Space| Menu | 
+ *                 |ExtRt | GUI  |                                        | Space| Menu |
  *                 `-------------'                                        `-------------'
  *                                 ,-------------.         ,-------------.
  *                                 |      |      |         |   X  |      |
@@ -142,25 +143,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 ,[_MOUSE] = KEYMAP(  // Layer 1: CURSORRGHT - cursor on the right, mouse on the left
         // left hand
-        RESET,   KC_NO,      KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,
-        _______, KC_BRK,     LALT(LCTL(LGUI(LSFT(KC_F1)))),      KC_MS_U,      LALT(LCTL(LGUI(LSFT(KC_F2)))),      KC_DEL,  KC_NO,
+        _______,   KC_NO,      KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,
+        RESET, KC_BRK,     LALT(LCTL(LGUI(LSFT(KC_F1)))),      KC_MS_U,      LALT(LCTL(LGUI(LSFT(KC_F2)))),      KC_DEL,  KC_NO,
         KC_ENT,  LCTL(KC_A), KC_MS_L,      KC_MS_D,      KC_MS_R,      XXXXXXX, KC_NO,
         _______, LCTL(KC_Z), LALT(LCTL(LGUI(LSFT(KC_F3)))), LCTL(KC_INS), LALT(LCTL(LGUI(LSFT(KC_F3)))), KC_RSFT, KC_NO,
                                _______, _______,
                                                 KC_ENT, _______,
-                                                _______, _______,  
-                                                _______, _______, 
-                                                                 
-     
+                                                _______, _______,
+                                                _______, _______,
+
+
         // right hand
                        KC_NO, KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                        KC_NO, KC_NO,    KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO,
                        KC_NO, KC_NO,    KC_MS_BTN1, KC_MS_BTN3,   KC_NO, KC_NO, KC_NO,
                        KC_NO, KC_NO,    KC_ACL2,   KC_NO, KC_NO, XXXXXXX, _______,
-                                       _______, _______, 
-           LSFT(RCMD(KC_LBRACKET)), LSFT(RCMD(KC_RBRACKET)), 
-           _______, _______, 
-           _______, _______         
+                                       _______, _______,
+           LSFT(RCMD(KC_LBRACKET)), LSFT(RCMD(KC_RBRACKET)),
+           _______, _______,
+           _______, _______
     )
 
 
@@ -191,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+---|           |---+------|------+------+------+------+--------|
  * |        |      |MsBtRt|MsBtMi|MsBtLe| PgDn | x |           | x |RShift| Cut  | Copy | Paste| xxx  |        |
  * `--------+------+------+------+------+------+---'           `---+------+------+------+------+------+--------'
- *                 |      |      |                                               |      |       | 
+ *                 |      |      |                                               |      |       |
  *                 `-------------'                                                `-------------'
  *                                 ,-------------.         ,-------------.
  *                                 |      |   X  |         |      |      |
@@ -213,24 +214,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ENT,  LCTL(KC_A), KC_LEFT, KC_DOWN, KC_RGHT, KC_PGUP, KC_NO,
         _______, XXXXXXX,    KC_BTN2, KC_BTN3, KC_BTN1, KC_PGDN, KC_NO,
                                _______, _______,
- 				           _______, _______, 
-				           _______, _______, 
+ 				           _______, _______,
+				           _______, _______,
  				           _______, _______,
         // right hand
                        KC_NO, KC_NO,   KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,
-                       KC_NO, KC_DEL,  KC_WH_U,      KC_MS_U,      KC_WH_D,      KC_GRV,  KC_DEL,
-                       KC_NO, KC_LEFT, KC_DOWN,      KC_UP,        KC_RGHT,      _______, KC_ENT,
+                       KC_NO, KC_NO,   KC_NO,        KC_NO,        KC_NO,        KC_NO,   KC_NO,
+                       KC_NO, KC_LEFT, KC_DOWN,      KC_UP,        KC_RGHT,      _______, KC_NO,
                        KC_NO, KC_RSFT, LCTL(KC_DEL), LCTL(KC_INS), LSFT(KC_INS), XXXXXXX, _______,
                                        _______, _______,
-           RCMD(KC_LBRACKET), RCMD(KC_RBRACKET), 
-           _______, _______, 
+           RCMD(KC_LBRACKET), RCMD(KC_RBRACKET),
+           _______, _______,
            _______, _______
     )
 
 
 /* Keymap 3: NUMBERS // numbers and F-keys
  * Note that "x" marks the keys non-existing in this short version for ManuForm.
- * 
+ *
  * This is my original Planck version, the Ergodox derived one is below it.
  * ,-----------------------------------------------------------------------------------.
  * | Esc  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |BackSp|
@@ -253,7 +254,7 @@ When held:   LShift                                                             
  * |        |  F11 |  F12 |LCtrl |LShift| LAlt | x |           | x | RAlt |RShift|   ,  |   .  |   /  |        |
 When held:   LShift  LCtrl                                                               RCtrl  RShift
  * `--------+------+------+------+------+------+---'           `---+------+------+------+------+------+--------'
- *                 |      |      |                                               |      |      | 
+ *                 |      |      |                                               |      |      |
  *                 `-------------'                                               `-------------'
  *                                 ,-------------.         ,-------------.
  *                                 |      |  X1  |         |   X2 |      |
@@ -270,25 +271,25 @@ When held:   LShift  LCtrl                                                      
 // Otherwise, it needs KC_*
 ,[_WINDOWS] = KEYMAP(  // Layer 3: NUMBERS // numbers and F-keys
         // left hand
-        KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_NO,    KC_NO,   LCTL(KC_4),   LCTL(KC_5),   LCTL(KC_6),   KC_NO, KC_NO,
-        _______,  KC_NO,   LCTL(KC_7),   LCTL(KC_8),   LCTL(KC_9),   KC_NO, KC_NO,
-        _______,  KC_NO,   KC_NO,   KC_LCTL, KC_LSFT, KC_LALT, KC_NO,
+        KC_NO,    KC_NO,   KC_NO,       KC_NO,        KC_NO,   KC_NO,   KC_NO,
+        LGUI(KC_GRV),    KC_NO,   LCTL(KC_P4),  LCTL(KC_P5),   LCTL(KC_P6),   KC_NO, KC_NO,
+        _______,  KC_NO,   LCTL(KC_P7),  LCTL(KC_P8),   LCTL(KC_P9),   KC_NO, KC_NO,
+        _______,  KC_NO,   KC_NO,       KC_LCTL,      KC_LSFT, KC_LALT, KC_NO,
                                                   _______, _______,
                                                                     _______, _______,
-                                                                    _______, _______,  
-                                                                    _______, _______, 
-                                                                 
-     
+                                                                    _______, _______,
+                                                                    _______, _______,
+
+
         // right hand
                        KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,           KC_NO,          KC_NO,
                        KC_NO, KC_6,    LALT(LCTL(LGUI(KC_1))),LALT(LCTL(LGUI(KC_UP))),LALT(LCTL(LGUI(KC_3))), KC_0, KC_BSPC,
                        KC_NO, KC_F6,   LALT(LCTL(LGUI(KC_LEFT))),LALT(LCTL(LGUI(KC_M))),LALT(LCTL(LGUI(KC_RIGHT))) ,  KC_F10,  _______,
                        KC_NO, KC_RALT, LALT(LCTL(LGUI(KC_2))),LALT(LCTL(LGUI(KC_DOWN))),LALT(LCTL(LGUI(KC_4))),  SFT_T(KC_SLSH), _______,
-                                       _______ ,_______, 
-           _______, _______, 
-           _______, _______, 
-           _______, _______         
+                                       _______ ,_______,
+           _______, _______,
+           _______, _______,
+           _______, _______
     )
 
 
@@ -297,7 +298,7 @@ When held:   LShift  LCtrl                                                      
 
 /* Keymap 4: NUMBERPAD - numpad on the right along with the arithetic operations
  * Note that "x" marks the keys non-existing in this short version for ManuForm.
- * 
+ *
  * This is my original Planck version, the Ergodox derived one is below it.
  * ,-----------------------------------------------------------------------------------.
  * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |BackSp|
@@ -324,7 +325,7 @@ When held:   LShift  LCtrl                                                      
  *                                 |      |      |         |      |      |
  *                                 |      |      |         |      |      |
  *                                 ,------|------|         |------+------|
- *                                 |      |      |         |      |      |  
+ *                                 |      |      |         |      |      |
  *                                 ,------|------|         |------+------|
  *                                 |      |      |         |      |      |
  *                                 `-------------'         `-------------'
@@ -337,24 +338,24 @@ When held:   LShift  LCtrl                                                      
 
         // left hand
 	KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        LGUI(KC_GRV), KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_NO,
+        _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_NO,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT, KC_LALT, KC_NO,
                                _______, _______,
                                                 _______, _______,
-                                                _______, _______,  
-                                                _______, _______, 
-                                                                 
-     
+                                                _______, _______,
+                                                _______, _______,
+
+
         // right hand
                        KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                        KC_NO, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
                        KC_NO, KC_PPLS, KC_4,    KC_5,    KC_6,    KC_PAST, KC_PENT,
                        KC_NO, KC_MINS, KC_1,    KC_2,    KC_3,    KC_PSLS, KC_EQL,
-                                       KC_0,    KC_KP_DOT, 
-           _______, KC_0, 
-           _______, _______, 
-           _______, _______         
+                                       KC_0,    KC_KP_DOT,
+           _______, KC_0,
+           _______, _______,
+           _______, _______
     )
 
 
@@ -362,7 +363,7 @@ When held:   LShift  LCtrl                                                      
 
 /* Keymap 5: EXTRARIGHT // far-right side keys shifted onto the existing keys
  * Note that "x" marks the keys non-existing in this short version for ManuForm.
- * 
+ *
  * This is my original Planck version, the Ergodox derived one is below it.
  * ,-----------------------------------------------------------------------------------.
  * | Esc  |   `  |      |      |      |      |   `  |   (  |   )  |   -  |   =  |BkSpc |
@@ -383,7 +384,7 @@ When held:   LShift  LCtrl                                                      
  * |--------+------+------+------+------+------+---|           |---+------+------+------+------+------+--------|
  * |   Shift|  ... |  ... |  ... | LShft| LAlt | x |           | x | RAlt | RShft|   [  |   ]  |  \   |        |
  * `--------+------+------+------+------+------+---'           `---+------+------+------+------+------+--------'
- *                 |      |      |                                               |      |      | 
+ *                 |      |      |                                               |      |      |
  *                 `-------------'                                               `-------------'
  *                                 ,-------------.         ,-------------.
  *                                 |      |      |         |      |      |
@@ -404,25 +405,25 @@ When held:   LShift  LCtrl                                                      
 
 ,[_SYMBOLS] = KEYMAP(  // Layer 5: EXTRARIGHT - far-right side keys shifted onto the existing keys
         // left hand
-        KC_NO,   KC_NO,      KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_NO,      KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_GRV, KC_EXLM,    KC_AT,     KC_HASH, KC_DLR,  KC_PERC, KC_NO,
-        _______, _______,    XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, KC_NO,
-        _______, KC_GRAVE,    KC_NO, PLOVER,  STENO_TXBOLT, XXXXXXX, KC_NO,
+        _______, _______,   XXXXXXX,   KC_LSHIFT, XXXXXXX, XXXXXXX, KC_NO,
+        _______, KC_GRAVE,  KC_NO,     PLOVER,  STENO_TXBOLT, XXXXXXX, KC_NO,
                                _______, _______,
                                                 _______, _______,
-                                                _______, _______,  
-                                                _______, _______, 
-                                                                 
-     
-        // right hand 
-                       KC_NO, KC_NO,  KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,
-                       KC_NO, KC_CIRC,KC_AMPR,KC_ASTR,  KC_LPRN,  KC_RPRN,  KC_MINS,
-                       KC_NO, KC_NO,  KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_EQL,
-                       KC_NO, KC_NO,  KC_NO,  KC_NO,    KC_NO,    KC_NO,    KC_NO,
-                                       _______, _______, 
-                  _______, _______, 
-                  _______, _______, 
-                  _______, _______         
+                                                _______, _______,
+                                                _______, _______,
+
+
+        // right hand
+                       KC_NO, KC_NO,  KC_NO,  KC_NO,      KC_NO,    KC_NO,    KC_NO,
+                       KC_NO, KC_CIRC,KC_AMPR,KC_ASTR,    KC_LPRN,  KC_RPRN,  KC_MINS,
+                       KC_NO, KC_NO,  KC_NO,  KC_RSHIFT,  KC_LCBR,  KC_RCBR,  KC_EQL,
+                       KC_NO, KC_NO,  KC_NO,  KC_NO,      KC_LBRC,  KC_RBRC,  KC_NO,
+                                       _______, _______,
+                  _______, _______,
+                  _______, _______,
+                  _______, _______
     )
 
 
@@ -431,12 +432,12 @@ When held:   LShift  LCtrl                                                      
 
 /* Keymap 6: PLOVER - plover STENO layout
  * Note that "x" marks the keys non-existing in this short version for ManuForm.
- * 
+ *
  * This is my original Planck version, the Ergodox derived one is below it.
 
  Plover layer (http://opensteno.org)
 AK: note I moved them around a bit:
-    - the consonants row up so the distance betwen the thumb keys 
+    - the consonants row up so the distance betwen the thumb keys
       and the upper rows is more comfortable.
     - moved the thumb keys closer to the center, to the more natural position of the thumbs.
  * ,-----------------------------------------------------------------------------------.
@@ -448,7 +449,7 @@ AK: note I moved them around a bit:
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Exit |      |      |      |   A  |   O  |   E  |   U  |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
- *         
+ *
 
 AK: In this version the rows moved a line down, to the original Plover form
  * ,-----------------------------------------------.           ,----------------------------------------------.
@@ -460,7 +461,7 @@ AK: In this version the rows moved a line down, to the original Plover form
  * |--------+------+------+------+------+------+---|           |---+------+------+------+------+------+--------|
  * |        |   S  |   K  |   W  |   R  |   *  | x |           | x |   *  |   R  |   B  |   G  |   S  |   Z    |
  * `--------+------+------+------+------+------+---'           `---+------+------+------+------+------+--------'
- *                 |   #  |   #  |                                               |   #  |   #  | 
+ *                 |   #  |   #  |                                               |   #  |   #  |
  *                 `-------------'                                               `-------------'
  *                                 ,-------------.         ,-------------.
  *                                 |   A  |   O  |         |   E  |   U  |
@@ -483,32 +484,32 @@ AK: In this version the rows moved a line down, to the original Plover form
         XXXXXXX, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_NO,
                                 XXXXXXX, XXXXXXX,
  		                               KC_C,    KC_V,
-                                                XXXXXXX, XXXXXXX,  
-                                                XXXXXXX, EXT_PLV,  
-                                                                 
-     
+                                                XXXXXXX, XXXXXXX,
+                                                XXXXXXX, EXT_PLV,
+
+
         // right hand
                        KC_NO, KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                       KC_NO, KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,   
+                       KC_NO, KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,
                        KC_NO, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
                        KC_NO, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
 		           XXXXXXX, XXXXXXX,
-           KC_N,    KC_M, 
+           KC_N,    KC_M,
            XXXXXXX, XXXXXXX,
-           EXT_PLV, XXXXXXX        
+           EXT_PLV, XXXXXXX
     )
 
 // Plover for TX Bolt communication protocol
 /* Plover Layer via TX Bolt interface.
    The layout is the same as for Plover above, just different key codes
 */
-/* Here is the layout from Planck and Soft/Hruf 
-[_STENO_TXBOLT] = { 
-   {STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, TD(TD_PLNUMBAR_PLEXIT2), STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, XXXXXXX}, 
-   {STN_SL,  STN_SL,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                 STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,  XXXXXXX }, 
-   {STN_SL,  STN_SL,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                 STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,  XXXXXXX }, 
+/* Here is the layout from Planck and Soft/Hruf
+[_STENO_TXBOLT] = {
+   {STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, TD(TD_PLNUMBAR_PLEXIT2), STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, XXXXXXX},
+   {STN_SL,  STN_SL,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                 STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,  XXXXXXX },
+   {STN_SL,  STN_SL,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                 STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,  XXXXXXX },
    {XXXXXXX, XXXXXXX, XXXXXXX, STN_A,   STN_O,   XXXXXXX,                 STN_E,   STN_U,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX}
- }, 
+ },
 */
 
 
@@ -520,23 +521,23 @@ AK: In this version the rows moved a line down, to the original Plover form
         STN_SL,  STN_SL,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, KC_NO,
                                 XXXXXXX, XXXXXXX,
  		                               STN_A,   STN_O,
-                                                XXXXXXX, XXXXXXX,  
-                                                XXXXXXX, EXT_PLV,  
-                                                                 
-     
+                                                XXXXXXX, XXXXXXX,
+                                                XXXXXXX, EXT_PLV,
+
+
         // right hand
                        KC_NO, KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-		       KC_NO, STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, 
-		       KC_NO, STN_ST1, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,  
-		       KC_NO, STN_ST2, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,  
+		       KC_NO, STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM,
+		       KC_NO, STN_ST1, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+		       KC_NO, STN_ST2, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
 		           XXXXXXX, XXXXXXX,
-           STN_E,   STN_U, 
+           STN_E,   STN_U,
            XXXXXXX, XXXXXXX,
-           EXT_PLV, XXXXXXX        
+           EXT_PLV, XXXXXXX
     )
 
 
-//-------------------------------------- 
+//--------------------------------------
 
 
 };
@@ -584,7 +585,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case CURSORRGHT:
       if (record->event.pressed) {
-        layer_on(_MOUSE);                            
+        layer_on(_MOUSE);
         update_tri_layer(_MOUSE, _ARROWS, _WINDOWS);
       } else {
         layer_off(_MOUSE);
@@ -709,3 +710,4 @@ void matrix_scan_user(void) {
     }
 
 };
+
