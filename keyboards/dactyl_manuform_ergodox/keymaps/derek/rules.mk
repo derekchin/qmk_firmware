@@ -16,4 +16,4 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 API_SYSEX_ENABLE = no
 
-TAP_DANCE_ENABLE = yes 	    # Allow multiple repeated key presses to be interpret as a different key(s)
+TAP_DANCE_ENABLE = no 	    # Allow multiple repeated key presses to be interpret as a different key(s)
