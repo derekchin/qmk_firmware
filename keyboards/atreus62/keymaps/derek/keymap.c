@@ -20,11 +20,11 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = { /* qwerty */
-  { KC_TAB,               KC_Q,               KC_W,           KC_E,                  KC_R,                KC_T,                KC_NO,           KC_Y,                     KC_U,              KC_I,          KC_O,      KC_P,                    KC_BSLASH },
-  { CTL_T(KC_ESCAPE),     KC_A,               KC_S,           LT(_NUMBERS,KC_D),     LT(_SYMBOLS,KC_F),   KC_G,                KC_NO,           KC_H,                     LT(_SYMBOLS,KC_J), KC_K,          KC_L,      LT(_MOUSE, KC_SCLN),     KC_QUOT},
-  { KC_LSFT,              LT(_ARROWS,KC_Z),   KC_X,           KC_C,                  KC_V,                KC_B,                KC_NO,           KC_N,                     KC_M,              KC_COMM,       KC_DOT,    KC_SLSH,                 KC_SFTENT},
-  { KC_NO,                KC_NO,              KC_NO,          KC_NO,                 KC_ESCAPE,           LT(_SYMBOLS,KC_SPC), CTL_T(KC_SPC),   LT(_SYMBOLS, KC_SPC),     KC_NO,             KC_NO,         KC_NO,     KC_NO,                   KC_NO},
-  { OSM(MOD_HYPR),        OSM(MOD_MEH),       KC_LALT,        ALT_T(KC_F19),         LT(_WINDOWS,KC_F20), GUI_T(KC_SPC),       ALT_T(KC_BSPC),  SFT_T(KC_SPC),            KC_EQL,            KC_LBRC,       KC_RBRC,   OSM(MOD_MEH),            OSM(MOD_HYPR) }
+  { KC_TAB,               KC_Q,               KC_W,           KC_E,                  KC_R,                KC_T,                KC_NO,           KC_Y,        KC_U,              KC_I,          KC_O,      KC_P,                    KC_BSLASH },
+  { CTL_T(KC_ESCAPE),     KC_A,               KC_S,           LT(_NUMBERS,KC_D),     LT(_SYMBOLS,KC_F),   KC_G,                KC_NO,           KC_H,        LT(_SYMBOLS,KC_J), KC_K,          KC_L,      LT(_MOUSE, KC_SCLN),     KC_QUOT},
+  { KC_LSFT,              LT(_ARROWS,KC_Z),   KC_X,           KC_C,                  KC_V,                KC_B,                KC_NO,           KC_N,        KC_M,              KC_COMM,       KC_DOT,    KC_SLSH,                 KC_SFTENT},
+  { KC_NO,                KC_NO,              KC_NO,          KC_NO,                 KC_ESCAPE,           KC_SPC,              CTL_T(KC_SPC),   KC_SPC,      KC_NO,             KC_NO,         KC_NO,     KC_NO,                   KC_NO},
+  { OSM(MOD_HYPR),        OSM(MOD_MEH),       KC_LALT,        KC_F19,                LT(_WINDOWS,KC_F20), GUI_T(KC_SPC),       ALT_T(KC_BSPC),  KC_SPC,      KC_EQL,            KC_F18,        KC_F17,    OSM(MOD_MEH),            OSM(MOD_HYPR) }
 },
 
 [_MOUSE] = {
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NUMBERS] = {
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_7,     KC_8,       KC_9,     KC_PPLS, KC_TRNS },
-  { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_4,     KC_5,       KC_6,     KC_TRNS, KC_TRNS },
+  { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,   KC_TRNS, KC_TRNS,  KC_TRNS, KC_4,     KC_5,       KC_6,     KC_TRNS, KC_TRNS },
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_1,     KC_2,       KC_3,     KC_TRNS, KC_TRNS },
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,  KC_PSLS,    KC_PAST,  KC_PMNS, KC_TRNS },
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_0,    KC_0,     KC_KP_DOT,  KC_PENT,  KC_PENT, KC_TRNS }
