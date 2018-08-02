@@ -8,11 +8,11 @@
 #include "keymap_steno.h"
 
 #define _QWERTY 0 // default QWERTY layer
-#define _NUMBERPAD 1  // numpad on the right along with the arithetic operations
-#define _MOUSE 2 // cursor on the right, mouse on the left
+#define _SYMBOLS 1 // far-right side keys shifted onto the existing keys
+#define _NUMBERPAD 2  // numpad on the right along with the arithetic operations
 #define _ARROWS 3 // cursor on the left, mouse on the right
 #define _WINDOWS 4 // numbers and F-keys
-#define _SYMBOLS 5 // far-right side keys shifted onto the existing keys
+#define _MOUSE 5 // cursor on the right, mouse on the left
 #define _PLOVER 6 // plover STENO layout
 #define _STENO_TXBOLT 7 //Plover STENO layout for TX Bolt communication protocol
 
@@ -92,11 +92,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         // right hand
                        KC_NO, KC_NO,  KC_NO, KC_NO,         KC_NO,  KC_NO,   KC_NO,
-                       KC_NO, KC_Y,   KC_U,  KC_I,          KC_O,   KC_P,    LT(_SYMBOLS,KC_BSLASH),
+                       KC_NO, KC_Y,   KC_U,  KC_I,          KC_O,   KC_P,    KC_BSLASH,
                        KC_NO, KC_H,   LT(_SYMBOLS,KC_J),    KC_K,   KC_L,    LT(_MOUSE,KC_SCLN), LT(_MOUSE,KC_QUOT),
                        KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_SFTENT,
-                                      LT(_WINDOWS,KC_EQUAL),  KC_APP,
-                      LT(_WINDOWS,KC_BSPACE),   KC_SPACE,
+                                      HYPR(KC_EQL),  KC_F17,
+                      ALT_T(KC_BSPACE),   KC_SPACE,
                       LT(_MOUSE,KC_F17),        OSM(MOD_MEH),
                       KC_F18,                   OSM(MOD_HYPR)
     )
@@ -404,8 +404,8 @@ When held:   LShift  LCtrl                                                      
 ,[_SYMBOLS] = KEYMAP(  // Layer 5: EXTRARIGHT - far-right side keys shifted onto the existing keys
         // left hand
         KC_NO,   KC_NO,      KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_GRV, KC_EXLM,    KC_AT,     KC_HASH, KC_DLR,  KC_PERC, KC_NO,
-        _______, _______,   XXXXXXX,   KC_LSHIFT, XXXXXXX, XXXXXXX, KC_NO,
+        KC_TILD, KC_EXLM,    KC_AT,     KC_HASH, KC_DLR,  KC_PERC, KC_NO,
+        KC_GRV, _______,   XXXXXXX,   KC_LSHIFT, XXXXXXX, XXXXXXX, KC_NO,
         _______, KC_GRAVE,  KC_NO,     PLOVER,  STENO_TXBOLT, XXXXXXX, KC_NO,
                                _______, _______,
                                                 _______, _______,
@@ -414,10 +414,10 @@ When held:   LShift  LCtrl                                                      
 
 
         // right hand
-                       KC_NO, KC_NO,  KC_NO,  KC_NO,      KC_NO,    KC_NO,    KC_NO,
-                       KC_NO, KC_CIRC,KC_AMPR,KC_ASTR,    KC_LPRN,  KC_RPRN,  KC_MINS,
-                       KC_NO, KC_NO,  KC_NO,  KC_RSHIFT,  KC_LCBR,  KC_RCBR,  KC_EQL,
-                       KC_NO, KC_NO,  KC_NO,  KC_NO,      KC_LBRC,  KC_RBRC,  KC_NO,
+                       KC_NO, KC_NO,  KC_NO,    KC_NO,      KC_NO,    KC_NO,    KC_NO,
+                       KC_NO, KC_CIRC,KC_AMPR,  KC_ASTR,    KC_LPRN,  KC_RPRN,  KC_UNDS,
+                       KC_NO, KC_NO,  KC_NO,    KC_NO,      KC_LCBR,  KC_RCBR,  KC_PLUS,
+                       KC_NO, KC_NO,  KC_MINS,  KC_EQL,      KC_LBRC,  KC_RBRC,  KC_NO,
                                        _______, _______,
                   _______, _______,
                   _______, _______,
@@ -515,8 +515,8 @@ AK: In this version the rows moved a line down, to the original Plover form
         // left hand
 	KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 	STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, KC_NO,
-	STN_SL,  STN_SL,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, KC_NO,
-        STN_SL,  STN_SL,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, KC_NO,
+	STN_SL,  STN_SL,  STN_TL,  STN_PL,  STN_HL,  STN_STR, KC_NO,
+  STN_SL,  STN_SL,  STN_KL,  STN_WL,  STN_RL,  STN_STR, KC_NO,
                                 XXXXXXX, XXXXXXX,
  		                               STN_A,   STN_O,
                                                 XXXXXXX, XXXXXXX,
@@ -526,8 +526,8 @@ AK: In this version the rows moved a line down, to the original Plover form
         // right hand
                        KC_NO, KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
 		       KC_NO, STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM, STN_NUM,
-		       KC_NO, STN_ST1, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
-		       KC_NO, STN_ST2, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+		       KC_NO, STN_STR, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+		       KC_NO, STN_STR, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
 		           XXXXXXX, XXXXXXX,
            STN_E,   STN_U,
            XXXXXXX, XXXXXXX,
