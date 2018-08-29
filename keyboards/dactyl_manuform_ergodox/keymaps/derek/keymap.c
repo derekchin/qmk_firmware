@@ -49,8 +49,29 @@ enum {
 // Other declarations would go here, separated by commas, if you have them
 /* }; */
 
+enum process_combo_event{
+  VM_RETURN,
+};
 
+const uint16_t PROGMEM return_combo[] = {KC_V, KC_M, COMBO_END};
+const uint16_t PROGMEM tenkey_combo[] = {KC_V, KC_C, COMBO_END};
 
+combo_t key_combos[COMBO_COUNT] = {
+  [VM_RETURN] = COMBO_ACTION(return_combo),
+};
+
+void process_combo_event(uint8_t combo_index, bool pressed) {
+    switch(combo_index) {
+    case VM_RETURN:
+        if (pressed) {
+                register_code(KC_ENT);
+                unregister_code(KC_ENT);
+                send_keyboard_report();
+        }
+        break;
+
+    }
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -94,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        KC_NO, KC_NO,  KC_NO, KC_NO,         KC_NO,  KC_NO,   KC_NO,
                        KC_NO, KC_Y,   KC_U,  KC_I,          KC_O,   KC_P,    KC_BSLASH,
                        KC_NO, KC_H,   LT(_SYMBOLS,KC_J),    KC_K,   KC_L,    LT(_MOUSE,KC_SCLN), LT(_MOUSE,KC_QUOT),
-                       KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_SFTENT,
+                       KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_RSFT,
                                       HYPR(KC_EQL),  KC_F17,
                       ALT_T(KC_BSPACE),   KC_SPACE,
                       LT(_MOUSE,KC_F17),        OSM(MOD_MEH),
