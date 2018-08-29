@@ -17,3 +17,4 @@ RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 API_SYSEX_ENABLE = no
 
 TAP_DANCE_ENABLE = no 	    # Allow multiple repeated key presses to be interpret as a different key(s)
+COMBO_ENABLE = yes 					# Enable key combinations
