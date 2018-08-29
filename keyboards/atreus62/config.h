@@ -28,6 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MANUFACTURER    Profet
 #define PRODUCT         Atreus62
 #define DESCRIPTION     q.m.k. keyboard firmware for Atreus62
+#define COMBO_COUNT 1
 
 #define ONESHOT_TAP_TOGGLE 2
 #define ONESHOT_TIMEOUT 5000
@@ -49,6 +50,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* number of backlight levels */
 // #define BACKLIGHT_LEVELS 3
+
+#define TAPPING_TERM 200
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCING_DELAY 5
