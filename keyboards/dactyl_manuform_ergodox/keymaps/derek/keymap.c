@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 ALT_T(KC_F19),  LT(_WINDOWS,KC_F20),
                                             GUI_T(KC_SPACE),  LT(_SYMBOLS,KC_SPC),
                                             MEH_T(KC_F21),    LT(_ARROWS,KC_F22),
-                                            ALL_T(KC_F20),    LT(_SYMBOLS,KC_SPC),
+                                            ALL_T(KC_F20),    PLOVER,
 
         // right hand
                        KC_NO, KC_NO,  KC_NO, KC_NO,         KC_NO,  KC_NO,   KC_NO,
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        KC_NO, KC_H,   LT(_SYMBOLS,KC_J),    KC_K,   KC_L,    LT(_MOUSE,KC_SCLN), LT(_MOUSE,KC_QUOT),
                        KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_RSFT,
                                       HYPR(KC_EQL),  KC_F17,
-                      LT(_SYMBOLS,KC_BSPACE),   KC_SPACE,
+                      LT(_SYMBOLS,KC_BSPACE),   LT(_SYMBOLS,KC_SPACE),
                       LT(_MOUSE,KC_F17),        OSM(MOD_MEH),
                       KC_F18,                   OSM(MOD_HYPR)
     )
@@ -501,7 +501,7 @@ AK: In this version the rows moved a line down, to the original Plover form
                                 XXXXXXX, XXXXXXX,
  		                               KC_C,    KC_V,
                                                 XXXXXXX, XXXXXXX,
-                                                XXXXXXX, EXT_PLV,
+                                                XXXXXXX, KC_NO,
 
 
         // right hand
