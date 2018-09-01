@@ -49,29 +49,29 @@ enum {
 // Other declarations would go here, separated by commas, if you have them
 /* }; */
 
-enum process_combo_event{
-  VM_RETURN,
-};
+// enum process_combo_event{
+//   VM_RETURN,
+// };
 
-const uint16_t PROGMEM return_combo[] = {KC_V, KC_M, COMBO_END};
-const uint16_t PROGMEM tenkey_combo[] = {KC_V, KC_C, COMBO_END};
+// const uint16_t PROGMEM return_combo[] = {KC_V, KC_M, COMBO_END};
+// const uint16_t PROGMEM tenkey_combo[] = {KC_V, KC_C, COMBO_END};
 
-combo_t key_combos[COMBO_COUNT] = {
-  [VM_RETURN] = COMBO_ACTION(return_combo),
-};
+// combo_t key_combos[COMBO_COUNT] = {
+//   [VM_RETURN] = COMBO_ACTION(return_combo),
+// };
 
-void process_combo_event(uint8_t combo_index, bool pressed) {
-    switch(combo_index) {
-    case VM_RETURN:
-        if (pressed) {
-                register_code(KC_ENT);
-                unregister_code(KC_ENT);
-                send_keyboard_report();
-        }
-        break;
+// void process_combo_event(uint8_t combo_index, bool pressed) {
+//     switch(combo_index) {
+//     case VM_RETURN:
+//         if (pressed) {
+//                 register_code(KC_ENT);
+//                 unregister_code(KC_ENT);
+//                 send_keyboard_report();
+//         }
+//         break;
 
-    }
-}
+//     }
+// }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LCTL_T(KC_ESC),       KC_A,             KC_S,           LT(_NUMBERPAD,KC_D),  LT(_SYMBOLS,KC_F),  KC_G,   KC_NO,
         SFT_T(KC_LBRACKET),   LT(_ARROWS,KC_Z), KC_X,           KC_C,                 KC_V,               KC_B,   KC_NO,
                                                 ALT_T(KC_F19),  LT(_WINDOWS,KC_F20),
-                                            GUI_T(KC_SPACE),  LT(_WINDOWS,KC_SPC),
+                                            GUI_T(KC_SPACE),  LT(_SYMBOLS,KC_SPC),
                                             MEH_T(KC_F21),    LT(_ARROWS,KC_F22),
                                             ALL_T(KC_F20),    LT(_SYMBOLS,KC_SPC),
 
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        KC_NO, KC_H,   LT(_SYMBOLS,KC_J),    KC_K,   KC_L,    LT(_MOUSE,KC_SCLN), LT(_MOUSE,KC_QUOT),
                        KC_NO, KC_N,   KC_M,  KC_COMM,       KC_DOT, KC_SLSH, KC_RSFT,
                                       HYPR(KC_EQL),  KC_F17,
-                      ALT_T(KC_BSPACE),   KC_SPACE,
+                      LT(_SYMBOLS,KC_BSPACE),   KC_SPACE,
                       LT(_MOUSE,KC_F17),        OSM(MOD_MEH),
                       KC_F18,                   OSM(MOD_HYPR)
     )
@@ -182,9 +182,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            _______, _______,
            _______, _______
     )
-
-
-
 
 
 /* Keymap 2: CURSORLEFT - cursor on the left, mouse on the right
@@ -424,12 +421,12 @@ When held:   LShift  LCtrl                                                      
 
 ,[_SYMBOLS] = KEYMAP(  // Layer 5: EXTRARIGHT - far-right side keys shifted onto the existing keys
         // left hand
-        KC_NO,   KC_NO,      KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_TILD, KC_EXLM,    KC_AT,     KC_HASH, KC_DLR,  KC_PERC, KC_NO,
-        KC_GRV, _______,   XXXXXXX,   KC_LSHIFT, XXXXXXX, XXXXXXX, KC_NO,
-        _______, KC_GRAVE,  KC_NO,     PLOVER,  STENO_TXBOLT, XXXXXXX, KC_NO,
+        KC_NO,   KC_NO,      KC_NO,   KC_NO,      KC_NO,    KC_NO,   KC_NO,
+        KC_TILD, KC_EXLM,    KC_AT,   KC_HASH,    KC_DLR,   KC_PERC, KC_NO,
+        KC_GRV, _______,   XXXXXXX,   KC_TAB,     KC_ESC,   XXXXXXX, KC_NO,
+        _______, KC_GRAVE,  KC_NO,    PLOVER,     STENO_TXBOLT, XXXXXXX, KC_NO,
                                _______, _______,
-                                                _______, _______,
+                                                KC_ENT, _______,
                                                 _______, _______,
                                                 _______, _______,
 
@@ -437,10 +434,10 @@ When held:   LShift  LCtrl                                                      
         // right hand
                        KC_NO, KC_NO,  KC_NO,    KC_NO,      KC_NO,    KC_NO,    KC_NO,
                        KC_NO, KC_CIRC,KC_AMPR,  KC_ASTR,    KC_LPRN,  KC_RPRN,  KC_UNDS,
-                       KC_NO, KC_NO,  KC_NO,    KC_NO,      KC_LCBR,  KC_RCBR,  KC_PLUS,
+                       KC_NO, KC_NO,  KC_ESC,   KC_NO,      KC_LCBR,  KC_RCBR,  KC_PLUS,
                        KC_NO, KC_NO,  KC_MINS,  KC_EQL,      KC_LBRC,  KC_RBRC,  KC_NO,
                                        _______, _______,
-                  _______, _______,
+                  _______, KC_ENT,
                   _______, _______,
                   _______, _______
     )
