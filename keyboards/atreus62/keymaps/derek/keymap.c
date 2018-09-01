@@ -109,8 +109,8 @@ const uint16_t PROGMEM fn_actions[] = {
 
 };
 
-const uint16_t PROGMEM tenkey_combo[] = {KC_F, KC_S, COMBO_END};
-combo_t key_combos[COMBO_COUNT] = {COMBO(tenkey_combo, _NUMBERS)};
+// const uint16_t PROGMEM enter_combo[] = {KC_V, KC_M, COMBO_END};
+// combo_t enter_combos[COMBO_COUNT] = {COMBO(enter_combo, KC_ENT)};
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
