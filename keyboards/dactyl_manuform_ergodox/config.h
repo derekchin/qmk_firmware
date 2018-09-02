@@ -54,8 +54,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
 
-#define COMBO_COUNT 1
-#define TAPPING_TERM    180
+//#define COMBO_COUNT 1
+#define TAPPING_TERM   180
+#define RETRO_TAPPING
 //#define IGNORE_MOD_TAP_INTERRUPT // this makes it possible to do rolling combos (zx)
 				// with keys that convert to other keys on hold
 				// (z becomes ctrl when you hold it, and when this option isn't enabled,
