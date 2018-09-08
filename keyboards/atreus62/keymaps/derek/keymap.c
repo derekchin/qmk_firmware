@@ -17,14 +17,15 @@
 #define _MACROS1 6
 #define _MACROS2 7
 #define _MACROS3 8
+#define _PLOVER 9
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = { /* qwerty */
-  { KC_NO,                KC_NO,              KC_NO,          KC_NO,                 KC_ESCAPE,           KC_SPC,              CTL_T(KC_SPC),   KC_SPC,      KC_NO,             KC_NO,         KC_NO,     KC_NO,                   KC_NO},
+  { _PLOVER,              KC_NO,              KC_NO,          KC_NO,                 KC_ESCAPE,           KC_SPC,              CTL_T(KC_SPC),   KC_SPC,      KC_NO,             KC_NO,         KC_NO,     KC_NO,                   KC_NO},
   { KC_TAB,               KC_Q,               KC_W,           KC_E,                  KC_R,                KC_T,                KC_NO,           KC_Y,        KC_U,              KC_I,          KC_O,      KC_P,                    KC_BSLASH },
   { CTL_T(KC_ESCAPE),     KC_A,               KC_S,           LT(_NUMBERS,KC_D),     LT(_SYMBOLS,KC_F),   KC_G,                KC_NO,           KC_H,        LT(_SYMBOLS,KC_J), KC_K,          KC_L,      LT(_MOUSE, KC_SCLN),     KC_QUOT},
   { KC_LSFT,              LT(_ARROWS,KC_Z),   KC_X,           KC_C,                  KC_V,                KC_B,                KC_NO,           KC_N,        KC_M,              KC_COMM,       KC_DOT,    KC_SLSH,                 KC_SFTENT},
-  { OSM(MOD_HYPR),        OSM(MOD_MEH),       KC_F18,         KC_F19,                LT(_WINDOWS,KC_F20), GUI_T(KC_SPC),       ALT_T(KC_BSPC),  KC_SPC,      HYPR(KC_EQL),      KC_F17,        KC_F16,    OSM(MOD_MEH),            OSM(MOD_HYPR) }
+  { OSM(MOD_HYPR),        OSM(MOD_MEH),       KC_F18,         KC_F19,                LT(_WINDOWS,KC_F20), GUI_T(KC_SPC),       ALT_T(KC_BSPC),  LT(_SYMBOLS, KC_SPC),      HYPR(KC_EQL),      KC_F17,        KC_F16,    OSM(MOD_MEH),            OSM(MOD_HYPR) }
 },
 
 [_SYMBOLS] = {
@@ -32,7 +33,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   { KC_TILD,      KC_EXLM, KC_AT,   KC_HASH,   KC_DLR,    KC_PERC, KC_CIRC,  KC_CIRC, KC_AMPR, KC_ASTR,   KC_LPRN, KC_RPRN, KC_UNDS },
   { KC_GRAVE,     KC_LABK, KC_LCBR, KC_LSHIFT, KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,   KC_LCBR, KC_RCBR, KC_PLUS },
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS, KC_MINS, KC_EQL,    KC_LBRC, KC_RBRC, KC_TRNS },
-  { TO(_QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS }
+  { TO(_QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,   KC_ENT,  KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS }
+  
 },
 
 
@@ -90,6 +92,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   { TO(_QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS },
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS },
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS }
+},
+
+[_PLOVER] = { /* qwerty */
+  { KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_ESCAPE,  KC_SPC,              CTL_T(KC_SPC),   KC_SPC,      KC_NO,             KC_NO,         KC_NO,     KC_NO,                   _QWERTY},
+  { KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_NO,      KC_B,                KC_NO,           KC_N,        KC_M,              KC_COMM,       KC_DOT,    KC_SLSH,                 KC_SFTENT},
+  { KC_NO,   KC_Q,   KC_W,   KC_E,   KC_R,       KC_T,                KC_NO,           KC_Y,        KC_U,              KC_I,          KC_O,      KC_P,                    KC_BSLASH },
+  { KC_NO,   KC_A,   KC_S,   KC_D,   KC_F,       KC_G,                KC_NO,           KC_H,        LT(_SYMBOLS,KC_J), KC_K,          KC_L,      KC_SCLN,                 KC_QUOT},
+  { KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_C,       KC_V,                KC_NO,           KC_N,        KC_M,              KC_NO,        KC_NO,      KC_NO,                   KC_NO }
 },
 
 /*
