@@ -103,9 +103,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = KEYMAP(  // layer 0 : default
         // left hand
         KC_NO,                KC_NO,            KC_NO,          KC_NO,                KC_NO,              KC_NO,  KC_NO,
-        LT(_SYMBOLS,KC_TAB),  KC_Q,             KC_W,           KC_E,                 KC_R,               KC_T,   KC_NO,
+        KC_TAB,               KC_Q,             KC_W,           KC_E,                 KC_R,               KC_T,   KC_NO,
         LCTL_T(KC_ESC),       KC_A,             KC_S,           LT(_NUMBERPAD,KC_D),  LT(_SYMBOLS,KC_F),  KC_G,   KC_NO,
-        SFT_T(KC_LBRACKET),   LT(_ARROWS,KC_Z), KC_X,           KC_C,                 KC_V,               KC_B,   KC_NO,
+        KC_LSFT,              LT(_ARROWS,KC_Z), KC_X,           KC_C,                 KC_V,               KC_B,   KC_NO,
                                                 ALT_T(KC_F19),  LT(_WINDOWS,KC_F20),
                                             GUI_T(KC_SPACE),  LT(_SYMBOLS,KC_SPC),
                                             MEH_T(KC_F21),    LT(_ARROWS,KC_F22),
