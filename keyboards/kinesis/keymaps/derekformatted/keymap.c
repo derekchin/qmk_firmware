@@ -95,9 +95,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [WINDOWS] = LAYOUT_pretty(
     KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   RESET,
     KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,                                          KC_TRNS,   KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
-    KC_TRNS,  KC_TRNS,  LCTL(KC_4),    LCTL(KC_5),    LCTL(KC_6),   KC_TRNS,                                          KC_TRNS,   LALT(LCTL(LGUI(KC_1))), LALT(LCTL(LGUI(KC_UP))), LALT(LCTL(LGUI(KC_3))), KC_TRNS, KC_TRNS,
-    KC_TRNS,  KC_TRNS,  LCTL(KC_KP_7), LCTL(KC_KP_8), LCTL(KC_KP_9), KC_TRNS,                                         KC_TRNS,   LALT(LCTL(LGUI(KC_LEFT))), LALT(LCTL(LGUI(KC_M))), LALT(LCTL(LGUI(KC_RIGHT))), KC_TRNS, KC_TRNS,    
-    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,                                         KC_TRNS,   LALT(LCTL(LGUI(KC_2))), LALT(LCTL(LGUI(KC_DOWN))), LALT(LCTL(LGUI(KC_4))), KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,  LCTL(KC_4),    LCTL(KC_5),    LCTL(KC_6),   KC_TRNS,                                          KC_TRNS,   LCAG(KC_1), LCAG(KC_UP), LCAG(KC_3), KC_TRNS, KC_TRNS,
+    KC_TRNS,  KC_TRNS,  LCTL(KC_KP_7), LCTL(KC_KP_8), LCTL(KC_KP_9), KC_TRNS,                                         KC_TRNS,   LCAG(KC_LEFT), LCAG(KC_M), LCAG(KC_RIGHT), KC_TRNS, KC_TRNS,    
+    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,                                         KC_TRNS,   LCAG(KC_2), LCAG(KC_DOWN), LCAG(KC_4), KC_TRNS,  KC_TRNS,
               KC_TRNS,  KC_TRNS,       KC_TRNS,  KC_TRNS,                                                             KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,
                                                       KC_TRNS,  KC_TRNS,                              KC_TRNS,  KC_TRNS,
                                                                 KC_TRNS,                              KC_TRNS,
