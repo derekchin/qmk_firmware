@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "keymap_steno.h"
 
 #define QWERTY 0
 #define NUMBERS 1
