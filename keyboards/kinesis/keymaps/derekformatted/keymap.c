@@ -1,5 +1,9 @@
 #include QMK_KEYBOARD_H
 
+#include "quantum.h"
+#include "action_layer.h"
+#include "keymap_steno.h"
+
 #define QWERTY 0
 #define NUMBERS 1
 #define MOUSE 2
@@ -41,14 +45,14 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [QWERTY] = LAYOUT_pretty(
-    KC_ESC,         KC_F1,    KC_F2,              KC_F3,              KC_F4,              KC_F5,   KC_F6,    KC_F7,               KC_F8,                KC_F9,              KC_F10,           KC_F11,   KC_F12,   KC_PSCR,  KC_SLCK,  TG(MOUSE),  TG(KINESIS),   RESET,
+    TG(STENO),      KC_F1,    KC_F2,              KC_F3,              KC_F4,              KC_F5,   KC_F6,    KC_F7,               KC_F8,                KC_F9,              KC_F10,           KC_F11,   KC_F12,   KC_PSCR,  KC_SLCK,  TG(MOUSE),  TG(KINESIS),   RESET,
     KC_EQL,         KC_1,     MT(MOD_LSFT, KC_2), MT(MOD_LCTL,KC_3),  MT(MOD_LALT,KC_4),  KC_5,    KC_6,     MT(MOD_RALT, KC_7),  MT(MOD_RCTL, KC_8),   MT(MOD_RSFT, KC_9), KC_0,             KC_MINS,
     KC_TAB,         KC_Q,     KC_W,               KC_E,               KC_R,               KC_T,    KC_Y,     KC_U,                KC_I,                 KC_O,               KC_P,             KC_BSLS,
-    CTL_T(KC_ESC),  KC_A,     KC_S,               KC_D,               KC_F,               KC_G,    KC_H,     KC_J,                KC_K,                 KC_L,               LT(2, KC_SCOLON), LT(2, KC_QUOTE),
+    CTL_T(KC_ESC),  KC_A,     KC_S,               KC_D,               KC_F,               KC_G,    KC_H,     KC_J,                KC_K,                 KC_L,               LT(2, KC_SCOLON), CTL_T(KC_QUOTE),
     KC_LSFT,        KC_Z,     KC_X,               KC_C,               KC_V,               KC_B,    KC_N,     KC_M,                KC_COMM,              KC_DOT,             KC_SLSH,          KC_RSFT,
-               LT(1, KC_TRNS), LT(5, KC_TRNS), ALT_T(KC_F19), LT(4, KC_F20),                                 HYPR(KC_EQUAL),      ALT_T(KC_F20),        LT(5, KC_TRNS),     KC_MEH,
-                                               LSFT(KC_LALT), RCTL(RSFT(KC_RALT)),                           RCTL(RSFT(KC_RALT)),       RSFT(KC_RALT),
-                                                                RGUI(KC_RCTL),                                  RGUI(KC_RSFT),
+               LT(1, KC_TRNS), LT(5, KC_TRNS), CTL_T(KC_F18), ALT_T(KC_F19),                                 ALT_T(KC_F20),       CTL_T(KC_F21),       LT(5, KC_TRNS),     KC_MEH,
+                                               LSFT(KC_LALT), RCTL(RSFT(KC_RALT)),                           RCTL(RSFT(KC_RALT)), RSFT(KC_RALT),
+                                                                RGUI(KC_RSFT),                                  RGUI(KC_RCTL),
                             GUI_T(KC_SPACE), LT(3, KC_SPACE), RCTL(KC_LALT),                                 RCTL(KC_LALT), LT(5,KC_BSPACE), LT(5, KC_SPACE)
   ),
 
@@ -117,15 +121,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [STENO] = LAYOUT_pretty(
-    KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,         KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   RESET,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,                                                                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,                                                                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,                                                                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,                                                                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-              KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,                                                                                           KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,
+    TG(STENO), KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,         KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   RESET,
+    KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,                                                                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,                                                                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,   STN_S1,   STN_TL,    STN_PL,   STN_HL,    STN_ST1,                                                                     STN_ST3,   STN_FR,   STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    KC_TRNS,   STN_S2,   STN_KL,    STN_WL,   STN_RL,    STN_ST2,                                                                     STN_ST4,   STN_RR,   STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+               KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,                                                                                           KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,
                                                       KC_TRNS,  KC_TRNS,                                               KC_TRNS,  KC_TRNS,
                                                                 KC_TRNS,                                               KC_TRNS,
-                                            KC_TRNS,  KC_TRNS,  KC_TRNS,                                               KC_TRNS,  KC_TRNS, KC_TRNS
+                                            STN_A,  STN_O,  KC_TRNS,                                               KC_TRNS,  STN_E, STN_U
   ),
 
 
