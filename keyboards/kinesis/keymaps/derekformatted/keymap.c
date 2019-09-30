@@ -11,9 +11,10 @@
 #define MOUSE 4
 #define ARROWS 5
 #define WINDOWS 6
-#define SYMBOLS 7
-#define STENO 8
-#define KINESIS 9
+#define SYMBOLSL 7
+#define SYMBOLSR 8
+#define STENO 9
+#define KINESIS 10 
 
 
 /****************************************************************************************************
@@ -55,15 +56,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     MO(3),    MO(7),             CTL_T(KC_F18),       ALT_T(KC_F19),                                 ALT_T(KC_F20),       CTL_T(KC_F21),       LT(7, KC_TRNS),     KC_MEH,
                                                MO(1), MO(1),                           RCTL(RSFT(KC_RALT)), MO(2),
                                                                 RGUI(KC_RSFT),                                  RGUI(KC_RCTL),
-                            GUI_T(KC_SPACE), LT(5, KC_SPACE), RCTL(KC_LALT),                                 RCTL(KC_LALT), LT(7,KC_BSPACE), LT(1, KC_SPACE)
+                            GUI_T(KC_SPACE), LT(1, KC_SPACE), RCTL(KC_LALT),                                 RCTL(KC_LALT), LT(2,KC_BSPACE), LT(1, KC_SPACE)
   ),
   [LEFTSWITCHER] = LAYOUT_pretty(
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,  KC_TRNS,  RESET,
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,    KC_TRNS,   KC_TRNS,   MO(3),      MO(7),      KC_TRNS,                            KC_TRNS,  MO(7),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-                KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,                                        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,    KC_TRNS,   KC_TRNS,   MO(3),      MO(7),      KC_TRNS,                            KC_TRNS,  MO(8),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    MO(5),                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+          OSM(MOD_LSFT),   OSM(MOD_LCTL),   OSM(MOD_LALT),    OSM(MOD_LGUI),                      OSM(MOD_RGUI),  OSM(MOD_RALT),  OSM(MOD_RCTL),  OSM(MOD_RSFT),
                                                   KC_TRNS,  KC_TRNS,                              KC_TRNS,  KC_TRNS,
                                                             KC_TRNS,                              KC_TRNS,
                                         KC_ENT,  KC_TRNS,  KC_TRNS,                              KC_TRNS,  KC_TRNS, KC_TRNS
@@ -73,9 +74,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,  KC_TRNS,  RESET,
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  MO(7),    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  MO(8),    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-                KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,                                        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+                KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,                                        OSM(MOD_RGUI),  OSM(MOD_RALT),  OSM(MOD_RCTL),  OSM(MOD_RSFT),
                                                   KC_TRNS,  KC_TRNS,                              KC_TRNS,  KC_TRNS,
                                                             KC_TRNS,                              KC_TRNS,
                                         KC_TRNS,  KC_TRNS,  KC_TRNS,                              KC_TRNS,  KC_TRNS, KC_TRNS
@@ -133,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             KC_TRNS,  KC_TRNS,   KC_TRNS,                             KC_TRNS,  KC_TRNS, KC_TRNS
   ),
 
-  [SYMBOLS] = LAYOUT_pretty(
+  [SYMBOLSL] = LAYOUT_pretty(
     KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,       KC_TRNS,      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   RESET,
     KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,                            KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,       KC_TRNS,      KC_TRNS,
     KC_TILD,   KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,                            KC_CIRC,    KC_AMPR,    KC_ASTR,  KC_LPRN,       KC_RPRN,      KC_UNDS,
@@ -144,6 +145,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                 KC_TRNS,                                               KC_TRNS,
                                             KC_ENTER,  KC_TRNS,   KC_TRNS,                                             KC_TRNS,  KC_TRNS, KC_TRNS
   ),
+
+  [SYMBOLSR] = LAYOUT_pretty(
+    KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,       KC_TRNS,      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   RESET,
+    KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,                            KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,       KC_TRNS,      KC_TRNS,
+    KC_TILD,   KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,                            KC_CIRC,    KC_AMPR,    KC_ASTR,  KC_LPRN,       KC_RPRN,      KC_UNDS,
+    KC_GRAVE,  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,                            KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_LCBR,       KC_RCBR,      KC_KP_PLUS,
+    KC_TRNS,   KC_GRAVE,   KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,                            KC_TRNS,    KC_MINUS,   KC_EQUAL, KC_LBRACKET,   KC_RBRACKET,  KC_MINUS,
+              KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,                                            KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,
+                                                      KC_TRNS,  KC_TRNS,                                               KC_TRNS,  KC_TRNS,
+                                                                KC_TRNS,                                               KC_TRNS,
+                                            KC_ENTER,  KC_TRNS,   KC_TRNS,                                             KC_TRNS,  KC_TRNS, KC_TRNS
+  ),
+
 
   [STENO] = LAYOUT_pretty(
     TG(STENO), KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,         KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   RESET,
