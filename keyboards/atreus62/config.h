@@ -28,6 +28,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MANUFACTURER    Profet
 #define PRODUCT         Atreus62
 #define DESCRIPTION     q.m.k. keyboard firmware for Atreus62
+// #define COMBO_COUNT 1
+
+// #define ONESHOT_TAP_TOGGLE 2
+// #define ONESHOT_TIMEOUT 5000
 
 /* key matrix size */
 // Rows are doubled-up
@@ -43,12 +47,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* define if matrix has ghost */
 //#define MATRIX_HAS_GHOST
+#define RETRO_TAPPING
 
 /* number of backlight levels */
 // #define BACKLIGHT_LEVELS 3
 
+#define TAPPING_TERM 200
+
 /* Set 0 if debouncing isn't needed */
-#define DEBOUNCE 5
+#define DEBOUNCE 0
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
@@ -61,16 +68,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /* disable debug print */
-// #define NO_DEBUG
+#define NO_DEBUG
 
 /* disable print */
-// #define NO_PRINT
+#define NO_PRINT
 
 /* disable action features */
-//#define NO_ACTION_LAYER
-//#define NO_ACTION_TAPPING
-//#define NO_ACTION_ONESHOT
-//#define NO_ACTION_MACRO
-//#define NO_ACTION_FUNCTION
+// #define NO_ACTION_LAYER
+// #define NO_ACTION_TAPPING
+// #define NO_ACTION_ONESHOT
+// #define NO_ACTION_MACRO
+// #define NO_ACTION_FUNCTION
 
 #endif
