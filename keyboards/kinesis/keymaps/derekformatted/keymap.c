@@ -14,7 +14,7 @@
 #define SYMBOLSL 7
 #define SYMBOLSR 8
 #define STENO 9
-#define KINESIS 10 
+#define KINESIS 10
 
 
 /****************************************************************************************************
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,  KC_TRNS,  RESET,
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,    KC_TRNS,   KC_TRNS,   MO(3),      MO(7),      KC_TRNS,                            KC_TRNS,  MO(8),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,    MO(5),     KC_TRNS,   MO(3),      MO(7),      KC_TRNS,                            KC_TRNS,  MO(8),  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    MO(5),                            KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
           OSM(MOD_LSFT),   OSM(MOD_LCTL),   OSM(MOD_LALT),    OSM(MOD_LGUI),                      OSM(MOD_RGUI),  OSM(MOD_RALT),  OSM(MOD_RCTL),  OSM(MOD_RSFT),
                                                   KC_TRNS,  KC_TRNS,                              KC_TRNS,  KC_TRNS,
