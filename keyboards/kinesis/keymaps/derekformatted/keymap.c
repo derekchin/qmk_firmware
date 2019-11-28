@@ -137,8 +137,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_WINDOWS2] = LAYOUT_pretty(
     KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   RESET,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,                                          KC_TRNS,   KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,                                          KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,                                         KC_TRNS,   KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,                                         KC_TRNS,   LGUI(LALT(KC_1)), LGUI(LALT(KC_2)), LGUI(LALT(KC_3)), KC_TRNS, KC_TRNS,
     KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,                                         SGUI(KC_H),   SGUI(KC_J), SGUI(KC_K), SGUI(KC_L), KC_TRNS, KC_TRNS,
     KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,                                         KC_TRNS,   SGUI(KC_1), SGUI(KC_2), SGUI(KC_3), KC_TRNS,  KC_TRNS,
               KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,                                                             KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,

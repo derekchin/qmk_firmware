@@ -13,20 +13,21 @@
 #define _SYMBOLS 2
 #define _NUMBERS 3
 #define _ARROWS 4
-#define _WINDOWS 5
-#define _MOUSE 6
-#define _MACROS1 7
-#define _MACROS2 8
-#define _MACROS3 9
-#define _PLOVER 10 
+#define _WINDOWSL 5
+#define _WINDOWSR 6
+#define _MOUSE 7
+#define _MACROS1 8
+#define _MACROS2 9
+#define _MACROS3 10
+#define _PLOVER 11 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = { /* qwerty */
   { KC_TAB,               KC_Q,               KC_W,           KC_E,             KC_R,                KC_T,             KC_NO,                KC_Y,                    KC_U,          KC_I,          KC_O,      KC_P,                    KC_BSLASH },
   { CTL_T(KC_ESCAPE),     KC_A,               KC_S,           KC_D,             KC_F,                KC_G,             KC_NO,                KC_H,                    KC_J,          KC_K,          KC_L,      LT(_MOUSE, KC_SCLN),     KC_QUOT},
   { KC_LSFT,              KC_Z,               KC_X,           KC_C,             KC_V,                KC_B,             KC_NO,                KC_N,                    KC_M,          KC_COMM,       KC_DOT,    KC_SLSH,                 KC_RSFT},
-  { _PLOVER,              KC_NO,              KC_NO,          KC_NO,            KC_NO,               MO(_LAUNCHER),    LT(_LAUNCHER,KC_SPC),   MO(_LAUNCHER),             KC_NO,         KC_NO,         KC_NO,     KC_NO,                   KC_NO},
-  { MO(_NUMBERS),         MO(_SYMBOLS),       KC_F18,         CTL_T(KC_F18),    ALT_T(KC_F19),      GUI_T(KC_SPC),    LT(_LAUNCHER,KC_BSPC),        LT(_SYMBOLS, KC_SPC),    ALT_T(KC_F20), CTL_T(KC_F21),    KC_F16,                  MO(_SYMBOLS),            OSM(MOD_MEH) }
+  { _PLOVER,              KC_NO,              KC_NO,          KC_NO,            KC_NO,               GUI_T(KC_SPC),    LT(_LAUNCHER,KC_SPC),   LT(_SYMBOLS, KC_SPC),             KC_NO,         KC_NO,         KC_NO,     KC_NO,                   KC_NO},
+  { MO(_NUMBERS),         MO(_SYMBOLS),       KC_F18,         CTL_T(KC_F18),    ALT_T(KC_F19),       GUI_T(KC_SPC),    LT(_LAUNCHER,KC_BSPC),  LT(_SYMBOLS, KC_SPC),    ALT_T(KC_F20), CTL_T(KC_F21),    KC_F16,                  MO(_SYMBOLS),            OSM(MOD_MEH) }
 },
 
 [_LAUNCHER] = {
@@ -61,13 +62,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   { KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, LGUI(KC_LBRACKET), LGUI(KC_RBRACKET), KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS }
 },
 
-[_WINDOWS] = {
+[_WINDOWSL] = {
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, LCAG(KC_1),     LCAG(KC_UP),    LCAG(KC_3),     KC_TRNS, KC_TRNS },
   { TO(_QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, LCAG(KC_LEFT),  LCAG(KC_M),     LCAG(KC_RIGHT), KC_TRNS, KC_TRNS },
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, LCAG(KC_2),     LCAG(KC_DOWN),  LCAG(KC_4),     KC_TRNS, KC_TRNS },
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, LCTL(KC_P4),    LCTL(KC_P5),    LCTL(KC_P6),    KC_TRNS, KC_TRNS },
   { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS, KC_TRNS }
 },
+
+[_WINDOWSR] = {
+  { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, LCAG(KC_1),     LCAG(KC_UP),    LCAG(KC_3),     KC_TRNS, KC_TRNS },
+  { TO(_QWERTY),  KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, LCAG(KC_LEFT),  LCAG(KC_M),     LCAG(KC_RIGHT), KC_TRNS, KC_TRNS },
+  { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, LCAG(KC_2),     LCAG(KC_DOWN),  LCAG(KC_4),     KC_TRNS, KC_TRNS },
+  { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, LCTL(KC_P4),    LCTL(KC_P5),    LCTL(KC_P6),    KC_TRNS, KC_TRNS },
+  { KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,       KC_TRNS,     KC_TRNS,  KC_TRNS, KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS, KC_TRNS }
+},
+
 
 [_MOUSE] = {
   { RESET,        KC_TRNS, HYPR(KC_F1),  KC_MS_U, HYPR(KC_F2), KC_TRNS, KC_TRNS,                 KC_F12,                   KC_BTN1, KC_BTN2, KC_TRNS, KC_TRNS, KC_TRNS },
