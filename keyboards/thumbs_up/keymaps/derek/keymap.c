@@ -52,10 +52,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_LAUNCHERL] = LAYOUT(
-    KC_TRNS,    KC_LSFT,        KC_LCTL,        KC_LALT,        KC_LCMD,        KC_TAB,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,    MO(_ARROWS),    KC_TRNS,        MO(_NUMBERS),   MO(_SYMBOLSL),  MO(_CMDNUM),    KC_TRNS,        MO(_SYMBOLSR),  KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,    KC_TRNS,        KC_TRNS,        MO(_WINDOWS2),  MO(_WINDOWS1),  KC_TRNS,        KC_TRNS,        MO(_WINDOWS1),  MO(_WINDOWS2),  KC_TRNS,  KC_TRNS,  KC_TRNS,
-                OSM(MOD_LALT),  OSM(MOD_LGUI),  KC_ENT,         KC_TRNS,        OSM(MOD_RGUI),  OSM(MOD_RALT),  KC_TRNS,        KC_TRNS
+    KC_TRNS,    KC_LSFT,        KC_LCTL,        KC_LALT,        KC_LCMD,        KC_TAB,         KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,    MO(_ARROWS),    KC_TRNS,        MO(_NUMBERS),   MO(_SYMBOLSL),  MO(_CMDNUM),    KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,    KC_TRNS,        KC_TRNS,        MO(_WINDOWS2),  MO(_WINDOWS1),  KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
+                OSM(MOD_LALT),  OSM(MOD_LGUI),  KC_ENT,         KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS
 
     ),
 
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_WINDOWS2] = LAYOUT(
     KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          KC_TRNS,   LCTL(LALT(KC_U)),      LCTL(LALT(KC_UP)),      LCTL(LALT(KC_I)),       KC_F3,    KC_TRNS,
     KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          KC_TRNS,   LCTL(LALT(KC_LEFT)),   LCTL(LALT(KC_ENTER)),   LCTL(LALT(KC_RIGHT)),   LGUI(KC_GRV),    KC_TRNS,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          KC_TRNS,   LCTL(LALT(KC_J)),      LCTL(LALT(KC_DOWN)),    LCTL(LALT(KC_K)),       KC_TRNS,    KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          KC_TRNS,   LCTL(LALT(KC_J)),      LCTL(LALT(KC_DOWN)),    LCTL(LALT(KC_K)),       LSFT(LGUI(KC_GRV)),    KC_TRNS,
               KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,                        KC_TRNS,   LGUI(KC_0),            KC_TRNS,                KC_TRNS
     ),
 
