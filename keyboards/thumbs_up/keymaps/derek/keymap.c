@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_LAUNCHERL] = LAYOUT(
     KC_TRNS,    KC_LSFT,        KC_LCTL,        KC_LALT,        KC_LCMD,        KC_TAB,         KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,    MO(_ARROWS),    KC_TRNS,        MO(_NUMBERS),   MO(_SYMBOLSL),  MO(_CMDNUM),    KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,    TT(_ARROWS),    KC_TRNS,        TT(_NUMBERS),   MO(_SYMBOLSL),  MO(_CMDNUM),    KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
     KC_TRNS,    KC_TRNS,        KC_TRNS,        MO(_WINDOWS2),  MO(_WINDOWS1),  KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
                 OSM(MOD_LALT),  OSM(MOD_LGUI),  KC_ENT,         KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS
 
@@ -90,9 +90,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_WINDOWS1] = LAYOUT(
-    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          KC_TRNS,            LCTL(LALT(KC_U)),   LCTL(LALT(KC_UP)),      LCTL(LALT(KC_I)), KC_TRNS,          KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          KC_TRNS,            LSFT(LCTL(LALT(KC_U))),   LSFT(LCTL(LALT(KC_I))),      LSFT(LCTL(LALT(KC_O))), KC_TRNS,          KC_TRNS,
     KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          LCTL(LALT(KC_E)),   LCTL(LALT(KC_D)),   LCTL(LALT(KC_F)),       LCTL(LALT(KC_G)), LCTL(LALT(KC_T)), KC_TRNS,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          KC_TRNS,            LCTL(LALT(KC_J)),   LCTL(LALT(KC_DOWN)),    LCTL(LALT(KC_K)),  LSFT(LGUI(KC_GRV)),          KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          KC_TRNS,            LSFT(LCTL(LALT(KC_J))),   LSFT(LCTL(LALT(KC_K))),    LSFT(LCTL(LALT(KC_K))),  LSFT(LGUI(KC_GRV)),          KC_TRNS,
               KC_TRNS,  KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,          KC_TRNS,            KC_TRNS,            KC_TRNS
     ),
 
