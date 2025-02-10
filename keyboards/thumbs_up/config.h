@@ -19,12 +19,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // #include "../../config.h"
 
+// For some reason, this causes compile issues.
 /* USB Device descriptor parameter */
 // #define VENDOR_ID    0xFEED
 // #define PRODUCT_ID   0x0000
 // #define DEVICE_VER   0x0001
 // #define MANUFACTURER  AK66666
 // #define PRODUCT      Thumbs Up!
+
+#define VENDOR_ID    0x4444  // Using a generic ID
+#define PRODUCT_ID   0x0001
+#define DEVICE_VER   0x0001
+#define MANUFACTURER    "Custom"
+#define PRODUCT         "Thumbs Up!"
 
 /* key matrix size */
 // Rows are doubled-up
@@ -166,9 +173,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #define SPLIT_USB_DETECT
-
-
-
 
 #define INGNORE_MOD_TAP_INTERRUPT
 #undef PERMISSIVE_HOLD
