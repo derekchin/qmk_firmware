@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define TAPPING_TERM 100
 
 #define RGBLIGHT_LAYERS
+#define SPLIT_LAYER_STATE_ENABLE
 
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
