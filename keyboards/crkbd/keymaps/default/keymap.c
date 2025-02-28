@@ -167,11 +167,4 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif
 
-bool rgb_matrix_indicators_kb(void) {
-    if (!rgb_matrix_indicators_user()) {
-        return false;
-    }
-    rgb_matrix_set_color(index, red, green, blue);
-    return true;
-}
 
