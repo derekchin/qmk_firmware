@@ -71,8 +71,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_ARROWS] = LAYOUT_split_3x6_3_ex2(
-    KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,   TO(_QWERTY),    KC_RCTL,       KC_TRNS,              KC_PGDN,            KC_PGUP,        KC_TRNS,     KC_TRNS,  KC_TRNS,
-    KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,   KC_LCTL,    KC_RCTL,       KC_LEFT,              KC_DOWN,            KC_UP,          KC_RIGHT,    KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,   TO(_QWERTY),    KC_KB_VOLUME_UP,       KC_TRNS,              KC_PGDN,            KC_PGUP,        KC_TRNS,     KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,   KC_KB_MUTE,        KC_KB_VOLUME_DOWN,       KC_LEFT,              KC_DOWN,            KC_UP,          KC_RIGHT,    KC_TRNS,  KC_TRNS,
     KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,  KC_TRNS,    KC_TRNS,          KC_TRNS,              KC_TRNS,            KC_TRNS,        KC_TRNS,     KC_TRNS,  KC_TRNS,
                             KC_TRNS,  KC_TRNS,    KC_TRNS,          LGUI(KC_LBRC),    LGUI(KC_RBRC),  KC_TRNS
     ),
