@@ -29,6 +29,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TOGGLE 2
 #define RGBLIGHT_LAYERS
 #define SPLIT_LAYER_STATE_ENABLE
+#define ENABLE_RGB_MATRIX_SPLASH
+#define ENABLE_RGB_MATRIX_MULTISPLASH
 
 #ifdef RGBLIGHT_ENABLE
     // #define RGBLIGHT_EFFECT_BREATHING

@@ -115,6 +115,9 @@ combo_t key_combos[] = {
      COMBO(km_picker, KC_F20),
 };
 
+void keyboard_post_init_user(void) {
+    rgb_matrix_mode(RGB_MATRIX_MULTISPLASH);
+}
 
 
 // #ifdef ENCODER_MAP_ENABLE

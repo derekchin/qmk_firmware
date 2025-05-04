@@ -1,2 +1,5 @@
 DEFAULT_FOLDER = crkbd/rev1
 COMBO_ENABLE = yes
+
+RGB_MATRIX_KEYPRESSES = yes
+LTO_ENABLE = yes
