@@ -45,14 +45,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_LAUNCHERL] = LAYOUT_split_3x6_3_ex2(
     KC_TRNS,    KC_LSFT,        KC_LCTL,       KC_LALT,        KC_LCMD,        KC_TAB,         KC_LCTL,    KC_RCTL,      KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
     KC_TRNS,    TT(_ARROWS),    KC_TRNS,        TT(_NUMBERS),   TT(_SYMBOLSL),  KC_TRNS,        KC_LCTL,    KC_RCTL,       KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,    TT(_GAMING),        KC_TRNS,        TT(_WINDOWS),   KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,    TT(_GAMING),        KC_TRNS,        TT(_WINDOWS),   KC_TRNS,        TG(_ARROWS),        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,
                     OSM(MOD_LGUI),  KC_ENT,         KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS
     ),
 
     [_LAUNCHERR] = LAYOUT_split_3x6_3_ex2(
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_LCTL,    KC_RCTL,    LSFT(KC_TAB),          KC_RCMD,        KC_RALT,  KC_RCTL,  KC_RSFT,  KC_TRNS,
     KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_LCTL,    KC_RCTL,    KC_TRNS,          TT(_SYMBOLSR),  KC_TRNS,  KC_TRNS,  TT(_MOUSE),  TT(_MOUSE),
-    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,          KC_TRNS,          KC_TRNS,        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,      TG(_MOUSE), KC_TRNS,    KC_TRNS,          KC_TRNS,        KC_TRNS,  KC_TRNS,
                                 KC_TRNS,    KC_TRNS,    KC_TRNS,          OSM(MOD_RGUI),    OSM(MOD_RALT),  KC_TRNS
     ),
 
