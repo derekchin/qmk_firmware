@@ -27,11 +27,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MANUFACTURER  AK66666
 // #define PRODUCT      Thumbs Up!
 
-#define VENDOR_ID    0x4444  // Using a generic ID
-#define PRODUCT_ID   0x0001
-#define DEVICE_VER   0x0001
-#define MANUFACTURER    "Custom"
-#define PRODUCT         "Thumbs Up!"
+// Moved to info.json
+// #define VENDOR_ID    0x4444  // Using a generic ID
+// #define PRODUCT_ID   0x0001
+// #define DEVICE_VER   0x0001
+// #define MANUFACTURER    "Custom"
+// #define PRODUCT         "Thumbs Up!"
 
 /* key matrix size */
 // Rows are doubled-up

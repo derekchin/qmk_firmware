@@ -1,7 +1,13 @@
 {
-  "keyboard_name": "thumbs_up",
+  "keyboard_name": "Thumbs Up!",
   "url": "",
   "maintainer": "qmk",
+  "manufacturer": "Custom",
+  "usb": {
+    "vid": "0x4444",
+    "pid": "0x0001",
+    "device_version": "1.0.0"
+  },
   "layouts": {
     "LAYOUT": {
       "layout": [
