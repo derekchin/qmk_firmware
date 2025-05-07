@@ -16,6 +16,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "action_layer.h"
+#include "process_combo.h"
+#include "rgb_matrix.h"
 #include QMK_KEYBOARD_H
 
 // Defines names for use in layer keycodes and the keymap
@@ -54,8 +57,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MOUSE] = LAYOUT_split_3x6_3_ex2(
         KC_TRNS, KC_TRNS, HYPR(KC_F1), KC_MS_UP,    HYPR(KC_F2), KC_TRNS,     TO(_QWERTY), KC_RCTL,             KC_TRNS,             KC_TRNS,    KC_TRNS,    KC_ACL0, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_MS_LEFT,  KC_MS_DOWN,  KC_MS_RIGHT, KC_TRNS,     KC_LCTL,     KC_RCTL,             KC_TRNS,             KC_MS_BTN1, KC_MS_BTN2, KC_ACL1, KC_TRNS, KC_TRNS,
-                 KC_TRNS, KC_TRNS,     HYPR(KC_F3), KC_TRNS,     HYPR(KC_F4), KC_TRNS,     KC_TRNS,             KC_TRNS,             KC_TRNS,    KC_ACL2,    KC_TRNS, KC_TRNS,
-                                                    KC_TRNS,     KC_TRNS,     KC_TRNS,     LGUI(LSFT(KC_LBRC)), LGUI(LSFT(KC_RBRC)), KC_TRNS
+                 KC_TRNS, KC_TRNS,     HYPR(KC_F3), KC_TRNS,     HYPR(KC_F4), KC_TRNS,     KC_TRNS,             KC_TRNS,             KC_TRNS,    KC_ACL2, KC_TRNS, KC_TRNS,
+                                                    KC_TRNS,     KC_TRNS,     KC_TRNS,                                               LGUI(LSFT(KC_LBRC)), LGUI(LSFT(KC_RBRC)), KC_TRNS
     ),
 
     [_ARROWS] = LAYOUT_split_3x6_3_ex2(
