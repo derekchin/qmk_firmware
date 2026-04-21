@@ -24,78 +24,81 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Defines names for use in layer keycodes and the keymap
 enum layer_names { _QWERTY, _LAUNCHERL, _LAUNCHERR, _NUMBERS, _MOUSE, _ARROWS, _WINDOWS, _SYMBOLSL, _SYMBOLSR, _GAMING };
 
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_split_3x6_3_ex2(
-        KC_TAB,        KC_Q,    KC_W, KC_E, KC_R,   KC_T,            KC_ESC,         KC_ENT,                 KC_Y,                     KC_U,    KC_I,   KC_O,    KC_P,                KC_BSLS,
-        CTL_T(KC_ESC), KC_A,    KC_S, KC_D, KC_F,   KC_G,            TO(_MOUSE),     KC_BSPC,                KC_H,                     KC_J,    KC_K,   KC_L,    LT(_MOUSE, KC_SCLN), CTL_T(KC_QUOTE),
-                       KC_LSFT, KC_Z, KC_X, KC_C,   KC_V,            KC_B,           KC_N,                   KC_M,                     KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
-                                            KC_ESC, GUI_T(KC_SPACE), MO(_LAUNCHERL), LT(_LAUNCHERR,KC_BSPC), LT(_LAUNCHERL, KC_SPACE), KC_F20
+        KC_TAB       , KC_Q           , KC_W          , KC_E                  , KC_R                    , KC_T  , KC_ESC    , KC_ENT , KC_Y   , KC_U  , KC_I   , KC_O   , KC_P               , KC_BSLS        ,
+        CTL_T(KC_ESC), KC_A           , KC_S          , KC_D                  , KC_F                    , KC_G  , TO(_MOUSE), LCTL(KC_SLSH), KC_H   , KC_J  , KC_K   , KC_L   , LT(_MOUSE, KC_SCLN), CTL_T(KC_QUOTE),
+        KC_LSFT      , KC_Z           , KC_X          , KC_C                  , KC_V                    , KC_B  , KC_N      , KC_M   , KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
+        KC_ESC       , GUI_T(KC_SPACE), MO(_LAUNCHERL), MO(_LAUNCHERR), LT(_LAUNCHERL, KC_SPACE), KC_ENT
     ),
 
     [_LAUNCHERL] = LAYOUT_split_3x6_3_ex2(
-        KC_TRNS, KC_LSFT,     KC_LCTL,     KC_LALT,      KC_LCMD,       KC_TAB,  KC_ESC,      KC_ENT,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, TT(_ARROWS), KC_TRNS,     TT(_NUMBERS), TT(_SYMBOLSL), KC_TRNS, KC_LCTL,     KC_RCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                 KC_TRNS,     TT(_GAMING), KC_TRNS,      TT(_WINDOWS),  KC_TRNS, TG(_ARROWS), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                         OSM(MOD_LGUI), KC_ENT,  KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS
+        _______      , KC_LSFT    , KC_LCTL, KC_LALT     , KC_LCMD      , KC_TAB     , KC_ESC , KC_ENT , _______, _______, _______, _______, _______, _______,
+        _______      , TT(_ARROWS), _______, TT(_NUMBERS), TT(_SYMBOLSL), _______    , KC_LCTL, KC_RCTL, _______, _______, _______, _______, _______, _______,
+        _______      , TT(_GAMING), _______, TT(_WINDOWS), _______      , TG(_ARROWS), _______, _______, _______, _______, _______, _______,
+        OSM(MOD_LGUI), KC_ENT     , _______, _______     , _______      , _______
     ),
 
     [_LAUNCHERR] = LAYOUT_split_3x6_3_ex2(
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LCTL, KC_ESC,        LSFT(KC_TAB),  KC_RCMD,       KC_RALT, KC_RCTL, KC_RSFT,    KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LCTL, KC_RCTL,       KC_TRNS,       TT(_SYMBOLSR), KC_TRNS, KC_TRNS, TT(_MOUSE), TT(_MOUSE),
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TG(_MOUSE),    KC_TRNS,       KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS,
-                                            KC_TRNS, KC_TRNS, KC_TRNS, OSM(MOD_RGUI), OSM(MOD_RALT), KC_TRNS
+        _______, _______, _______, _______      , _______      , _______, KC_LCTL   , KC_ESC , LSFT(KC_TAB), KC_RCMD      , KC_RALT, KC_RCTL, KC_RSFT   , _______   ,
+        _______, _______, _______, _______      , _______      , _______, KC_LCTL   , KC_RCTL, KC_BSPC     , TT(_SYMBOLSR), _______, _______, TT(_MOUSE), TT(_MOUSE),
+        _______, _______, _______, _______      , _______      , _______, TG(_MOUSE), _______, _______     , _______      , _______, _______,
+        _______, _______, _______, OSM(MOD_RGUI), OSM(MOD_RALT), _______
     ),
 
     [_NUMBERS] = LAYOUT_split_3x6_3_ex2(
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TO(_QWERTY), KC_RCTL,  KC_EQUAL, KC_7,    KC_8, KC_9,    KC_ASTR, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LCTL,     KC_RCTL,  KC_PLUS,  KC_4,    KC_5, KC_6,    KC_PLUS, KC_TRNS,
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_MINUS, KC_1,     KC_2,    KC_3, KC_BSLS, KC_TRNS,
-                                            KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS,  KC_0,     KC_EQUAL
+        _______, _______, _______, _______, _______, _______ , TO(_QWERTY), KC_RCTL, KC_EQUAL, KC_7, KC_8   , KC_9   , KC_ASTR, _______,
+        _______, _______, _______, _______, _______, _______ , KC_LCTL    , KC_RCTL, KC_PLUS , KC_4, KC_5   , KC_6   , KC_PLUS, _______,
+        _______, _______, _______, _______, _______, _______ , KC_MINUS   , KC_1   , KC_2    , KC_3, KC_BSLS, _______,
+        _______, _______, _______, _______, KC_0   , KC_EQUAL
     ),
 
     [_MOUSE] = LAYOUT_split_3x6_3_ex2(
-        KC_TRNS, KC_TRNS, HYPR(KC_F1), KC_MS_UP,    HYPR(KC_F2), KC_TRNS,     TO(_QWERTY), KC_RCTL,             KC_TRNS,             KC_TRNS,    KC_TRNS,    KC_ACL0, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_MS_LEFT,  KC_MS_DOWN,  KC_MS_RIGHT, KC_TRNS,     KC_LCTL,     KC_RCTL,             KC_TRNS,             KC_MS_BTN1, KC_MS_BTN2, KC_ACL1, KC_TRNS, KC_TRNS,
-                 KC_TRNS, KC_TRNS,     HYPR(KC_F3), KC_TRNS,     HYPR(KC_F4), KC_TRNS,     KC_TRNS,             KC_TRNS,             KC_TRNS,    KC_ACL2,    KC_TRNS, KC_TRNS,
-                                                    KC_TRNS,     KC_TRNS,     KC_TRNS,     LGUI(LSFT(KC_LBRC)), LGUI(LSFT(KC_RBRC)), KC_TRNS
+        _______, _______, HYPR(KC_F1), KC_MS_UP           , HYPR(KC_F2)        , _______, TO(_QWERTY), KC_RCTL, _______, _______   , _______   , KC_ACL0, _______, _______,
+        _______, _______, KC_MS_LEFT , KC_MS_DOWN         , KC_MS_RIGHT        , _______, KC_LCTL    , KC_RCTL, _______, KC_MS_BTN1, KC_MS_BTN2, KC_ACL1, _______, _______,
+        _______, _______, HYPR(KC_F3), _______            , HYPR(KC_F4)        , _______, _______    , _______, _______, KC_ACL2   , _______   , _______,
+        _______, _______, _______    , LGUI(LSFT(KC_LBRC)), LGUI(LSFT(KC_RBRC)), _______
     ),
 
     [_ARROWS] = LAYOUT_split_3x6_3_ex2(
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TO(_QWERTY), KC_KB_VOLUME_UP,   KC_TRNS,       KC_PGDN, KC_PGUP, KC_TRNS,  KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_KB_MUTE,  KC_KB_VOLUME_DOWN, KC_LEFT,       KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS, KC_TRNS,
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS,           KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,
-                                            KC_TRNS, KC_TRNS, KC_TRNS,     LGUI(KC_LBRC),     LGUI(KC_RBRC), KC_TRNS
+        _______, _______, _______, _______      , _______      , _______, TO(_QWERTY), KC_KB_VOLUME_UP  , _______, KC_PGDN, KC_PGUP, _______ , _______, _______,
+        _______, _______, _______, _______      , _______      , _______, KC_KB_MUTE , KC_KB_VOLUME_DOWN, KC_LEFT, KC_DOWN, KC_UP  , KC_RIGHT, _______, _______,
+        _______, _______, _______, _______      , _______      , _______, _______    , _______          , _______, _______, _______, _______ ,
+        _______, _______, _______, LGUI(KC_LBRC), LGUI(KC_RBRC), _______
     ),
 
     [_WINDOWS] = LAYOUT_split_3x6_3_ex2(
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TO(_QWERTY), KC_RCTL, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS,            KC_F3,        KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LCTL,     KC_RCTL, KC_TRNS, KC_TRNS, KC_TRNS,      LSFT(LGUI(KC_TAB)), LGUI(KC_TAB), KC_TRNS,
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, LGUI(KC_GRV), LSFT(LGUI(KC_GRV)), KC_TRNS,
-                                            KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS
+        _______, _______, _______, _______, _______, _______, TO(_QWERTY), KC_RCTL, _______, _______     , _______           , _______           , KC_F3       , _______,
+        _______, _______, _______, _______, _______, _______, KC_LCTL    , KC_RCTL, _______, _______     , _______           , LSFT(LGUI(KC_TAB)), LGUI(KC_TAB), _______,
+        _______, _______, _______, _______, _______, _______, _______    , _______, _______, LGUI(KC_GRV), LSFT(LGUI(KC_GRV)), _______           ,
+        _______, _______, _______, _______, _______, _______
     ),
 
     [_SYMBOLSL] = LAYOUT_split_3x6_3_ex2(
-        KC_TILD,  KC_EXLM, KC_AT,    KC_HASH, KC_DLR,  KC_PERC, TO(_QWERTY), KC_RCTL, KC_CIRC,  KC_AMPR,  KC_ASTR,       KC_LPRN, KC_RPRN,  KC_UNDS,
-        KC_GRAVE, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_LCTL,     KC_RCTL, KC_QUOT,  KC_PLUS,  RSFT(KC_QUOT), KC_LCBR, KC_RCBR,  KC_KP_PLUS,
-                  KC_TRNS, KC_GRAVE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_UNDS, KC_MINUS, KC_EQUAL, KC_LBRC,       KC_RBRC, KC_MINUS,
-                                              KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS
+        KC_TILD , KC_EXLM , KC_AT  , KC_HASH, KC_DLR , KC_PERC, TO(_QWERTY), KC_RCTL , KC_CIRC , KC_AMPR, KC_ASTR      , KC_LPRN , KC_RPRN, KC_UNDS   ,
+        KC_GRAVE, _______ , _______, _______, _______, _______, KC_LCTL    , KC_RCTL , KC_QUOT , KC_PLUS, RSFT(KC_QUOT), KC_LCBR , KC_RCBR, KC_KP_PLUS,
+        _______ , KC_GRAVE, _______, _______, _______, _______, KC_UNDS    , KC_MINUS, KC_EQUAL, KC_LBRC, KC_RBRC      , KC_MINUS,
+        _______ , _______ , _______, _______, _______, _______
     ),
 
     [_SYMBOLSR] = LAYOUT_split_3x6_3_ex2(
-        KC_TILD,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, TO(_QWERTY), KC_RCTL, KC_CIRC,  KC_AMPR,  KC_ASTR, KC_LPRN, KC_RPRN,  KC_UNDS,
-        KC_GRAVE, KC_TILD, KC_GRV,  KC_TRNS, KC_PIPE, KC_TRNS, KC_LCTL,     KC_RCTL, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_LCBR, KC_RCBR,  KC_KP_PLUS,
-                  KC_TRNS, KC_BSLS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_MINUS, KC_EQUAL, KC_LBRC, KC_RBRC, KC_MINUS,
-                                             KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS
+        KC_TILD , KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, TO(_QWERTY), KC_RCTL , KC_CIRC , KC_AMPR, KC_ASTR, KC_LPRN , KC_RPRN, KC_UNDS   ,
+        KC_GRAVE, KC_TILD, KC_GRV , _______, KC_PIPE, _______, KC_LCTL    , KC_RCTL , _______ , _______, _______, KC_LCBR , KC_RCBR, KC_KP_PLUS,
+        _______ , KC_BSLS, _______, _______, _______, _______, _______    , KC_MINUS, KC_EQUAL, KC_LBRC, KC_RBRC, KC_MINUS,
+        _______ , _______, _______, _______, _______, _______
     ),
 
     [_GAMING] = LAYOUT_split_3x6_3_ex2(
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_UP,   KC_TRNS,  KC_TRNS, TO(_QWERTY), KC_TRNS, KC_TRNS,  KC_U,    KC_I,    KC_O,    KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RIGHT, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,  KC_J,    KC_K,    KC_SCLN, KC_TRNS, KC_TRNS,
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,     KC_TRNS, KC_MINUS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                            KC_TRNS,  KC_TRNS, KC_UP,       KC_TRNS, KC_TRNS,  KC_TRNS
-    ),
+        _______, _______, _______, KC_UP  , _______ , _______, TO(_QWERTY), _______ , _______, KC_U   , KC_I   , KC_O   , _______, _______,
+        _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______    , _______ , _______, KC_J   , KC_K   , KC_SCLN, _______, _______,
+        _______, _______, _______, _______, _______ , _______, _______    , KC_MINUS, _______, _______, _______, _______,
+        _______, _______, KC_UP  , _______, _______ , _______
+    )
   };
+
 
 const uint16_t PROGMEM key_esc[]   = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM km_picker[] = {KC_J, KC_L, COMBO_END};
