@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_LAUNCHERL] = LAYOUT_split_3x6_3_ex2(
         _______      , KC_LSFT    , KC_LCTL, KC_LALT     , KC_LCMD      , KC_TAB     , KC_ESC , KC_ENT , _______, _______, _______, _______, _______, _______,
         _______      , TT(_ARROWS), _______, TT(_NUMBERS), TT(_SYMBOLSL), _______    , KC_LCTL, KC_RCTL, _______, _______, _______, _______, _______, _______,
-        _______      , TT(_GAMING), _______, TT(_WINDOWS), _______      , TG(_ARROWS), _______, _______, _______, _______, _______, _______,
+        _______      , TT(_GAMING), _______, TT(_WINDOWS), TT(_ARROWS), _______, _______, _______, _______, _______, _______, _______,
         OSM(MOD_LGUI), KC_ENT     , _______, _______     , _______      , _______
     ),
 
