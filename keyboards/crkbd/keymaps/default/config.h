@@ -51,3 +51,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGBLIGHT_VAL_STEP 17
 #endif
 
+#define LEADER_TIMEOUT 1000 // Gives you 1 full second to finish the sequence
+#define LEADER_PER_KEY_TIMING // Resets the timer after every keypress
+#define LEADER_NO_TIMEOUT

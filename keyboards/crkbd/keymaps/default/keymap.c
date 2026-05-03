@@ -22,13 +22,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 // Defines names for use in layer keycodes and the keymap
-enum layer_names { _QWERTY, _LAUNCHERL, _LAUNCHERR, _NUMBERS, _MOUSE, _ARROWS, _SYMBOLSL, _SYMBOLSR };
+enum layer_names { _QWERTY, _LAUNCHERL, _LAUNCHERR, _NUMBERS, _MOUSE, _ARROWS, _SYMBOLSL, _SYMBOLSR, _GAMING };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_split_3x6_3_ex2(
         KC_TAB       , KC_Q           , KC_W          , KC_E                  , KC_R                    , KC_T  , KC_ESC    , KC_ENT , KC_Y   , KC_U  , KC_I   , KC_O   , KC_P               , KC_BSLS        ,
-        CTL_T(KC_ESC), KC_A           , KC_S          , KC_D                  , KC_F                    , KC_G  , TO(_MOUSE), LCTL(KC_SLSH), KC_H   , KC_J  , KC_K   , KC_L   , LT(_MOUSE, KC_SCLN), CTL_T(KC_QUOTE),
+        CTL_T(KC_ESC), KC_A           , KC_S          , KC_D                  , KC_F                    , KC_G  , QK_LEAD, LCTL(KC_SLSH), KC_H   , KC_J  , KC_K   , KC_L   , LT(_MOUSE, KC_SCLN), CTL_T(KC_QUOTE),
         KC_LSFT      , KC_Z           , KC_X          , KC_C                  , KC_V                    , KC_B  , KC_N      , KC_M   , KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
         KC_ESC       , GUI_T(KC_SPACE), MO(_LAUNCHERL), MO(_LAUNCHERR), KC_SPACE, KC_ENT
     ),
@@ -81,7 +81,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRAVE, KC_TILD, KC_GRV , _______, KC_PIPE, _______, KC_LCTL    , KC_RCTL , _______ , _______, _______, KC_LCBR , KC_RCBR, KC_KP_PLUS,
         _______ , KC_BSLS, _______, _______, _______, _______, _______    , KC_MINUS, KC_EQUAL, KC_LBRC, KC_RBRC, KC_MINUS,
         _______ , _______, _______, _______, _______, _______
-    )
+    ),
+[_GAMING] = LAYOUT_split_3x6_3_ex2(
+        // Left Side                                     // Middle        // Right Side (Arcade Layout)
+        KC_NO,   KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,  TO(_QWERTY), KC_NO,  KC_NO,   KC_U,    KC_I,    KC_O,    KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,  KC_NO,       KC_NO,  KC_NO,   KC_J,    KC_K,    KC_L, KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,       KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_NO,   KC_NO
+    ),
 };
 
 
@@ -97,14 +104,42 @@ void keyboard_post_init_user(void) {
     rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
 }
 
-// #ifdef ENCODER_MAP_ENABLE
-// const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-//   [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-//   [1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-//   [2] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-//   [3] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-// };
-// #endif
+void leader_start_user(void) {
+    // Visual feedback: Keyboard turns Blue while waiting for sequence
+    rgb_matrix_set_color_all(RGB_BLUE);
+}
+
+void leader_end_user(void) {
+    // <Leader> L N sequence for Numbers Layer
+    if (leader_sequence_two_keys(KC_L, KC_N)) {
+        layer_on(_NUMBERS);
+    }
+
+    // <Leader> L A sequence for Arrows Layer
+    else if (leader_sequence_two_keys(KC_L, KC_A)) {
+        layer_on(_ARROWS);
+    }
+
+    // <Leader> L M sequence for Mouse Layer
+    else if (leader_sequence_two_keys(KC_L, KC_M)) {
+        layer_on(_MOUSE);
+    }
+
+    else if (leader_sequence_two_keys(KC_L, KC_G)) {
+        layer_on(_GAMING);
+    }
+    // <Leader> Q to go back to QWERTY (clear all layers)
+    else if (leader_sequence_one_key(KC_Q)) {
+        layer_move(_QWERTY);
+    }
+    else {
+        // FLASH RED if the sequence failed/timed out
+        rgb_matrix_set_color_all(RGB_RED);
+        // The RGB Matrix Indicators function will revert this
+        // back to the layer color on the next frame.
+    }
+}
+
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     uint8_t layer = get_highest_layer(layer_state | default_layer_state);
@@ -126,6 +161,9 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             case _LAUNCHERR:
             case _LAUNCHERL:
                 rgb_matrix_set_color(i, RGB_CYAN);
+                break;
+            case _GAMING:
+                rgb_matrix_set_color(i, RGB_MAGENTA);
                 break;
             case _QWERTY:
                 rgb_matrix_set_color(i, 0, 0, 0);
