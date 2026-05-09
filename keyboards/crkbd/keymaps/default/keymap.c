@@ -2,6 +2,13 @@
 #include "process_combo.h"
 #include "rgb_matrix.h"
 #include QMK_KEYBOARD_H
+#include "timer.h"
+#include "host.h"
+
+static uint16_t mouse_timer = 0;
+static int8_t mouse_dir = 0;
+static uint32_t last_mouse_report = 0;
+
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names { _QWERTY, _LAUNCHERL, _LAUNCHERR, _NUMBERS, _MOUSE, _ARROWS, _SYMBOLSL, _SYMBOLSR, _TABWINDOW, _GAMING};
@@ -39,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, KC_MS_UP           , _______        , _______, TO(_QWERTY), KC_RCTL, _______, _______   , _______   , KC_ACL0, _______, _______,
         _______, _______, KC_MS_LEFT , KC_MS_DOWN         , KC_MS_RIGHT        , _______, KC_LCTL    , KC_RCTL, _______, KC_MS_BTN1, KC_MS_BTN2, KC_ACL1, _______, _______,
         _______, _______, _______, _______            , _______        , _______, _______    , _______, _______, KC_ACL2   , _______   , _______,
-        TO(_QWERTY), _______, _______    , _______ , _______ , _______
+        TO(_QWERTY), _______, _______    , LGUI(LSFT(KC_LBRC)),    LGUI(LSFT(KC_RBRC)) , _______
     ),
 
     [_ARROWS] = LAYOUT_split_3x6_3_ex2(
@@ -125,6 +132,16 @@ void leader_end_user(void) {
     else if (leader_sequence_one_key(KC_Q)) {
         layer_move(_QWERTY);
     }
+    // <Leader> mj / mk for Mouse Jump (Left / Right)
+    else if (leader_sequence_two_keys(KC_M, KC_J)) {
+        mouse_timer = timer_read();
+        mouse_dir = -1;
+    }
+    else if (leader_sequence_two_keys(KC_M, KC_K)) {
+        mouse_timer = timer_read();
+        mouse_dir = 1;
+    }
+
     else {
         // FLASH RED if the sequence failed/timed out
         rgb_matrix_set_color_all(RGB_RED);
@@ -132,6 +149,22 @@ void leader_end_user(void) {
         // back to the layer color on the next frame.
     }
 }
+
+void matrix_scan_user(void) {
+    if (mouse_dir != 0) {
+        if (timer_elapsed(mouse_timer) < 1000) { // 1 second
+            if (timer_elapsed32(last_mouse_report) >= 10) { // 100Hz
+                report_mouse_t report = {0};
+                report.x = mouse_dir * 127;
+                host_mouse_send(&report);
+                last_mouse_report = timer_read32();
+            }
+        } else {
+            mouse_dir = 0;
+        }
+    }
+}
+
 
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
