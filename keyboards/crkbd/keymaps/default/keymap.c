@@ -133,11 +133,11 @@ void leader_end_user(void) {
         layer_move(_QWERTY);
     }
     // <Leader> mj / mk for Mouse Jump (Left / Right)
-    else if (leader_sequence_two_keys(KC_M, KC_J)) {
+    else if (leader_sequence_two_keys(KC_M, KC_H)) {
         mouse_timer = timer_read();
         mouse_dir = -1;
     }
-    else if (leader_sequence_two_keys(KC_M, KC_K)) {
+    else if (leader_sequence_two_keys(KC_M, KC_L)) {
         mouse_timer = timer_read();
         mouse_dir = 1;
     }
@@ -152,7 +152,7 @@ void leader_end_user(void) {
 
 void matrix_scan_user(void) {
     if (mouse_dir != 0) {
-        if (timer_elapsed(mouse_timer) < 1000) { // 1 second
+        if (timer_elapsed(mouse_timer) < 300) { // 0.3 seconds
             if (timer_elapsed32(last_mouse_report) >= 10) { // 100Hz
                 report_mouse_t report = {0};
                 report.x = mouse_dir * 127;

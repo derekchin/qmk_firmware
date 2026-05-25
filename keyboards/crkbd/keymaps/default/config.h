@@ -29,8 +29,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TOGGLE 2
 #define RGBLIGHT_LAYERS
 #define SPLIT_LAYER_STATE_ENABLE
-#define ENABLE_RGB_MATRIX_SPLASH
-#define ENABLE_RGB_MATRIX_MULTISPLASH
+//#define ENABLE_RGB_MATRIX_SPLASH
+//#define ENABLE_RGB_MATRIX_MULTISPLASH
 #define SPLIT_TRANSPORT_MIRROR
 //#define SPLIT_USB_DETECT
 // #define EE_HANDS
