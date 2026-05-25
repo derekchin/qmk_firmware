@@ -204,3 +204,38 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     return false;
 }
 
+bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        keypos_t event_key = record->event.key;
+
+        // Iterate through the key matrix to see if any momentary layer key is physically held
+        for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
+            for (uint8_t c = 0; c < MATRIX_COLS; c++) {
+                // If a key is down, and it's not the key currently being pressed
+                if (matrix_is_on(r, c) && !(r == event_key.row && c == event_key.col)) {
+                    keypos_t held_key = {.row = r, .col = c};
+                    // Get the keycode for the held key under the currently active layer state
+                    uint16_t held_keycode = keymap_key_to_keycode(layer_switch_get_layer(held_key), held_key);
+
+                    // Check if it's a momentary layer switch key (e.g. MO(layer))
+                    if (IS_QK_MOMENTARY(held_keycode)) {
+                        uint8_t target_layer = QK_MOMENTARY_GET_LAYER(held_keycode);
+                        // If the target layer hasn't been activated in QMK's state yet
+                        if (!layer_state_is(target_layer)) {
+                            // Look up what the incoming key should do on that target layer
+                            uint16_t override_keycode = keymap_key_to_keycode(target_layer, event_key);
+                            if (override_keycode != KC_TRNS) {
+                                record->keycode = override_keycode;
+                                update_source_layers_cache(event_key, target_layer);
+                                return true; // Match found, override applied
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return true;
+}
+
+
