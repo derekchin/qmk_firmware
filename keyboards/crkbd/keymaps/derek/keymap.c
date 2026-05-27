@@ -5,14 +5,7 @@
 #include "timer.h"
 #include "host.h"
 
-static uint16_t mouse_timer = 0;
-static int8_t mouse_dir = 0;
-static uint32_t last_mouse_report = 0;
-
-
-// Defines names for use in layer keycodes and the keymap
-enum layer_names { _QWERTY, _LAUNCHERL, _LAUNCHERR, _NUMBERS, _MOUSE, _ARROWS, _SYMBOLSL, _SYMBOLSR, _TABWINDOW, _GAMING};
-
+#include "../../../../users/derek/derek.h"
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_split_3x6_3_ex2(
         KC_TAB       , KC_Q           , KC_W          , KC_E                  , KC_R                    , KC_T  , KC_ESC    , KC_ENT , KC_Y   , KC_U  , KC_I   , KC_O   , KC_P               , KC_BSLS        ,
@@ -89,82 +82,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-const uint16_t PROGMEM key_esc[]   = {KC_F, KC_J, COMBO_END};
-const uint16_t PROGMEM km_picker[] = {KC_J, KC_L, COMBO_END};
 
-combo_t key_combos[] = {
-    COMBO(key_esc, KC_ESC),
-    COMBO(km_picker, KC_F20),
-};
 
 void keyboard_post_init_user(void) {
     rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
 }
-
-void leader_start_user(void) {
-    // Visual feedback: Keyboard turns Blue while waiting for sequence
-    rgb_matrix_set_color_all(RGB_BLUE);
-}
-
-void leader_end_user(void) {
-    // <Leader> L N sequence for Numbers Layer
-    if (leader_sequence_two_keys(KC_L, KC_N)) {
-        layer_on(_NUMBERS);
-    }
-
-    // <Leader> L A sequence for Arrows Layer
-    else if (leader_sequence_two_keys(KC_L, KC_A)) {
-        layer_on(_ARROWS);
-    }
-
-    // <Leader> L M sequence for Mouse Layer
-    else if (leader_sequence_two_keys(KC_L, KC_M)) {
-        layer_on(_MOUSE);
-    }
-
-    else if (leader_sequence_two_keys(KC_L, KC_G)) {
-        layer_on(_GAMING);
-    }
-    else if (leader_sequence_one_key(KC_T)) {
-        layer_on(_TABWINDOW);
-    }
-    // <Leader> Q to go back to QWERTY (clear all layers)
-    else if (leader_sequence_one_key(KC_Q)) {
-        layer_move(_QWERTY);
-    }
-    // <Leader> mj / mk for Mouse Jump (Left / Right)
-    else if (leader_sequence_two_keys(KC_M, KC_H)) {
-        mouse_timer = timer_read();
-        mouse_dir = -1;
-    }
-    else if (leader_sequence_two_keys(KC_M, KC_L)) {
-        mouse_timer = timer_read();
-        mouse_dir = 1;
-    }
-
-    else {
-        // FLASH RED if the sequence failed/timed out
-        rgb_matrix_set_color_all(RGB_RED);
-        // The RGB Matrix Indicators function will revert this
-        // back to the layer color on the next frame.
-    }
-}
-
-void matrix_scan_user(void) {
-    if (mouse_dir != 0) {
-        if (timer_elapsed(mouse_timer) < 300) { // 0.3 seconds
-            if (timer_elapsed32(last_mouse_report) >= 10) { // 100Hz
-                report_mouse_t report = {0};
-                report.x = mouse_dir * 127;
-                host_mouse_send(&report);
-                last_mouse_report = timer_read32();
-            }
-        } else {
-            mouse_dir = 0;
-        }
-    }
-}
-
 
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
@@ -204,38 +126,10 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     return false;
 }
 
-bool pre_process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        keypos_t event_key = record->event.key;
+const uint16_t PROGMEM key_esc[]   = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM km_picker[] = {KC_J, KC_L, COMBO_END};
 
-        // Iterate through the key matrix to see if any momentary layer key is physically held
-        for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
-            for (uint8_t c = 0; c < MATRIX_COLS; c++) {
-                // If a key is down, and it's not the key currently being pressed
-                if (matrix_is_on(r, c) && !(r == event_key.row && c == event_key.col)) {
-                    keypos_t held_key = {.row = r, .col = c};
-                    // Get the keycode for the held key under the currently active layer state
-                    uint16_t held_keycode = keymap_key_to_keycode(layer_switch_get_layer(held_key), held_key);
-
-                    // Check if it's a momentary layer switch key (e.g. MO(layer))
-                    if (IS_QK_MOMENTARY(held_keycode)) {
-                        uint8_t target_layer = QK_MOMENTARY_GET_LAYER(held_keycode);
-                        // If the target layer hasn't been activated in QMK's state yet
-                        if (!layer_state_is(target_layer)) {
-                            // Look up what the incoming key should do on that target layer
-                            uint16_t override_keycode = keymap_key_to_keycode(target_layer, event_key);
-                            if (override_keycode != KC_TRNS) {
-                                record->keycode = override_keycode;
-                                update_source_layers_cache(event_key, target_layer);
-                                return true; // Match found, override applied
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return true;
-}
-
-
+combo_t key_combos[] = {
+    COMBO(key_esc, KC_ESC),
+    COMBO(km_picker, KC_F20),
+};
